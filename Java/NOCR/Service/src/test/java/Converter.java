@@ -47,7 +47,8 @@ public class Converter {
 
       for (Map.Entry<String, String> entry : sortedMap.entrySet()) {
         switch (entry.getKey()) {
-          case "version":
+          case "app.name":
+          case "version.number":
           case "release.candidate":
             properties.setProperty(entry.getKey(), entry.getValue());
             break;
