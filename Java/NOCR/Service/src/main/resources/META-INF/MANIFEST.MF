@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Implementation-Vendor: Amnafzar LLC
+Implementation-Title: Standalone HelloWorld Webservice
+Implementation-Version: 1.0.0.1
+Specification-Vendor: Amnafzar LLC
+Created-By: Developers of Web department
+Main-Class: com.github.capitansissy.service.Launcher

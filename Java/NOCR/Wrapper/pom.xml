@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.capitansissy</groupId>
-  <artifactId>constants</artifactId>
+  <artifactId>wrapper</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
-  <name>- Constants Module</name>
+  <name>- Wrapper Module</name>
   <url>https://capitansissy.github.io/HelloWorld/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,6 +22,16 @@
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
       <version>13.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.capitansissy</groupId>
+      <artifactId>security</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.capitansissy</groupId>
+      <artifactId>constants</artifactId>
+      <version>1.0</version>
     </dependency>
   </dependencies>
   <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->

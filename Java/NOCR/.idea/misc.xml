@@ -4,10 +4,17 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/Constants/pom.xml" />
+        <option value="$PROJECT_DIR$/Encapsulation/pom.xml" />
+        <option value="$PROJECT_DIR$/Messages/pom.xml" />
+        <option value="$PROJECT_DIR$/Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Stub/pom.xml" />
+        <option value="$PROJECT_DIR$/Database/pom.xml" />
+        <option value="$PROJECT_DIR$/Security/pom.xml" />
+        <option value="$PROJECT_DIR$/Wrapper/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

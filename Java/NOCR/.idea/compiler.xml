@@ -6,11 +6,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Database" />
         <module name="Constants" />
+        <module name="Stub" />
+        <module name="Security" />
+        <module name="Service" />
+        <module name="Encapsulation" />
+        <module name="Wrapper" />
+        <module name="Messages" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Constants" target="1.5" />
+      <module name="Constants" target="1.8" />
+      <module name="Database" target="1.8" />
+      <module name="Encapsulation" target="1.8" />
+      <module name="Messages" target="1.8" />
+      <module name="Security" target="1.8" />
+      <module name="Service" target="1.8" />
+      <module name="Stub" target="1.8" />
+      <module name="Wrapper" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

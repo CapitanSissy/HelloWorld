@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.capitansissy</groupId>
-  <artifactId>constants</artifactId>
+  <artifactId>messages</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
-  <name>- Constants Module</name>
+  <name>- Messages Module</name>
   <url>https://capitansissy.github.io/HelloWorld/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
