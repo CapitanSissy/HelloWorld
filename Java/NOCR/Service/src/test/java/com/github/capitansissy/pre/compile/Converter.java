@@ -1,3 +1,5 @@
+package com.github.capitansissy.pre.compile;
+
 import com.github.capitansissy.constants.Defaults;
 import com.github.capitansissy.security.AES;
 import org.jetbrains.annotations.NotNull;

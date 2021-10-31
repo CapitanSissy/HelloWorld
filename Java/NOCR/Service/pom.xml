@@ -120,18 +120,15 @@
         <version>3.0.0</version>
         <executions>
           <execution>
-            <phase>compile</phase>
+            <phase>test</phase>
             <goals>
               <goal>java</goal>
             </goals>
-            <configuration>
-              <mainClass>java/Converter.main</mainClass>
-              <classpathScope>test</classpathScope>
-            </configuration>
           </execution>
         </executions>
         <configuration>
-          <mainClass>com.baeldung.main.Exec</mainClass>
+          <mainClass>com.github.capitansissy.pre.compile.Converter</mainClass>
+          <classpathScope>test</classpathScope>
         </configuration>
       </plugin>
       <!--   [$$$$$$$$$$]   -->
@@ -162,15 +159,15 @@
                       <class classes="protected"
                              methods="protected"
                              fields="protected"/>
+                      <method name="void main(java.lang.String[])" class="${mainclass}"/>
                     </keep>
                   </shrink>
-                  <rename mainclass="com.github.capitansissy.service.Launcher"
-                          logfile="${project.build.directory}/yguard.log.xml">
+                  <rename mainclass="${mainclass}" logfile="${project.build.directory}/yguard.log.xml">
                     <keep>
-                      <class classes="protected"
-                             methods="protected"
-                             fields="protected"/>
+                      <class classes="protected" methods="protected" fields="protected"/>
                     </keep>
+                    <!-- Tutorial URL: https://github.com/yWorks/yGuard/tree/master/examples -->
+                    <!-- TODO -->
                   </rename>
                 </yguard>
               </tasks>
@@ -239,6 +236,9 @@
                     <exclude>**/messages*.properties</exclude>
                     <exclude>**/structure.properties</exclude>
                     <exclude>plain-text/**</exclude>
+                    <exclude>jks/**</exclude>
+                    <exclude>META-INF/**</exclude>
+                    <exclude>rmi/**</exclude>
                   </excludes>
                 </resource>
               </resources>
@@ -259,6 +259,19 @@
             <exclude>**/JUnit.java</exclude>
           </excludes>
           <argLine>-Dfile.encoding=UTF-8</argLine>
+        </configuration>
+      </plugin>
+      <!--   [$$$$$$$$$$]   -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.github.capitansissy.service.Launcher</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
       <!--   [$$$$$$$$$$]   -->
