@@ -10,10 +10,10 @@ on:
     branches: [ main ]
 
 before_install:
+  - mvn -f Java/NOCR/Enumeration/pom.xml clean install
   - mvn -f Java/NOCR/Constants/pom.xml clean install
   - mvn -f Java/NOCR/Database/pom.xml clean install
   - mvn -f Java/NOCR/Encapsulation/pom.xml clean install
-  - mvn -f Java/NOCR/Enumeration/pom.xml clean install
   - mvn -f Java/NOCR/Messages/pom.xml clean install
   - mvn -f Java/NOCR/Security/pom.xml clean install
   - mvn -f Java/NOCR/Stub/pom.xml clean install
