@@ -285,6 +285,13 @@
         </configuration>
         <executions>
           <execution>
+            <id>default-cobertura</id>
+            <goals>
+              <goal>cobertura</goal>
+            </goals>
+            <phase>test</phase>
+          </execution>
+          <execution>
             <id>clean-corbertura</id>
             <goals>
               <goal>clean</goal>
