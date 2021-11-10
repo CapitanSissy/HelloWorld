@@ -14,5 +14,6 @@ before_install:
 
 script:
   - java --version
-  - mvn clean install
-  - mvn test
+  - mvn -X version
+
+
