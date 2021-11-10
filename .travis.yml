@@ -9,7 +9,10 @@ on:
   pull_request:
     branches: [ main ]
 
+before_install:
+  - mvn clean install
+
 script:
   - java --version
-  - ./mvnw clean install
-  - ./mvnw test
+  - mvn clean install
+  - mvn test
