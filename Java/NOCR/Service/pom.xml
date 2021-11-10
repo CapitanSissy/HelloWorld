@@ -285,10 +285,25 @@
         </configuration>
         <executions>
           <execution>
+            <id>clean-corbertura</id>
             <goals>
               <goal>clean</goal>
+            </goals>
+            <phase>initialize</phase>
+          </execution>
+          <execution>
+            <id>check-corbertura</id>
+            <goals>
               <goal>check</goal>
             </goals>
+            <phase>process-resources</phase>
+          </execution>
+          <execution>
+            <id>run-corbertura</id>
+            <goals>
+              <goal>cobertura</goal>
+            </goals>
+            <phase>prepare-package</phase>
           </execution>
         </executions>
       </plugin>
