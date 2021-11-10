@@ -1,5 +1,8 @@
 name: Hello World
 
+sudo: required
+language: java
+
 on:
   push:
     branches: [ main ]
