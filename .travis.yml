@@ -3,6 +3,11 @@ name: Hello World
 sudo: required
 language: java
 
+jdk:
+  - openjdk8
+
+script: "mvn cobertura:cobertura"
+
 on:
   push:
     branches: [ main ]
@@ -26,3 +31,5 @@ script:
   - mvn -f Java/NOCR/Service/pom.xml test
   - mvn -f Java/NOCR/Service/pom.xml verify
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t 5185ac37-4bfa-475a-8c93-b2acf189019b
