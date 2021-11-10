@@ -26,7 +26,7 @@ before_install:
   - mvn -f Java/NOCR/Service/pom.xml clean
 
 script:
-  - mvn cobertura:cobertura
+  - mvn -f Java/NOCR/Service/pom.xml cobertura:cobertura
   - mvn -f Java/NOCR/Service/pom.xml test
   - mvn -f Java/NOCR/Service/pom.xml package
 
