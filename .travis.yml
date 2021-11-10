@@ -10,11 +10,10 @@ on:
     branches: [ main ]
 
 before_install:
-  - mvn clean install
+  - mvn -f Java/NOCR/Service/pom.xml clean
 
 script:
   - java --version
-  - mvn -f Java/NOCR/Service/pom.xml clean
   - mvn -f Java/NOCR/Service/pom.xml test
   - mvn -f Java/NOCR/Service/pom.xml verify
 
