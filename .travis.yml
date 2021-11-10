@@ -14,6 +14,7 @@ before_install:
 
 script:
   - java --version
-  - mvn -X version
-
+  - mvn -f Java/NOCR/Service/pom.xml clean
+  - mvn -f Java/NOCR/Service/pom.xml test
+  - mvn -f Java/NOCR/Service/pom.xml verify
 
