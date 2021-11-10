@@ -12,6 +12,8 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.22" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.22" level="project" />
     <orderEntry type="library" name="Maven: com.yworks:yguard:3.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.yworks:annotation:3.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm:7.2" level="project" />
@@ -27,7 +29,12 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="Constants" />
+    <orderEntry type="module" module-name="Enumeration" />
     <orderEntry type="module" module-name="Security" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
+    <orderEntry type="module" module-name="Usb" />
+    <orderEntry type="library" name="Maven: com.github.tuupertunut:powershell-lib-java:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
   </component>
 </module>

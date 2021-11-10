@@ -285,6 +285,11 @@
       <version>13.0</version>
     </dependency>
     <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.22</version>
+    </dependency>
+    <dependency>
       <groupId>com.yworks</groupId>
       <artifactId>yguard</artifactId>
       <version>3.0.0</version>
@@ -299,6 +304,22 @@
       <groupId>com.github.capitansissy</groupId>
       <artifactId>security</artifactId>
       <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.capitansissy</groupId>
+      <artifactId>usb</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+        </exclusion>
+      </exclusions>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
     </dependency>
   </dependencies>
   <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->
