@@ -1,5 +1,9 @@
 name: Hello World
 
+env:
+  global:
+    - CODECOV_TOKEN='5185ac37-4bfa-475a-8c93-b2acf189019b'
+
 sudo: required
 language: java
 
