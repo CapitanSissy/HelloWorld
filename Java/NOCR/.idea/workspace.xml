@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8dd1473e-f8fb-42e8-9905-3b9251f45592" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Constants/Constants.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Constants/Constants.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Constants/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Constants/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Constants/src/main/java/com/github/capitansissy/constants/Defaults.java" beforeDir="false" afterPath="$PROJECT_DIR$/Constants/src/main/java/com/github/capitansissy/constants/Defaults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/src/main/java/com/github/capitansissy/service/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/Service/src/main/java/com/github/capitansissy/service/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/src/main/resources/plain-text/db_plain-text.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Service/src/main/resources/plain-text/db_plain-text.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wrapper/Wrapper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Wrapper/Wrapper.iml" afterDir="false" />
-    </list>
+    <list default="true" id="8dd1473e-f8fb-42e8-9905-3b9251f45592" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Constants/target/" />
     <ignored path="$PROJECT_DIR$/Encapsulation/target/" />
@@ -330,6 +316,7 @@
       <workItem from="1636470644521" duration="123000" />
       <workItem from="1636470848850" duration="6282000" />
       <workItem from="1636477187560" duration="371000" />
+      <workItem from="1636528659601" duration="422000" />
     </task>
     <servers />
   </component>
@@ -366,12 +353,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27197000" />
+    <option name="totallyTimeSpent" value="27619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30332828" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30786687" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
