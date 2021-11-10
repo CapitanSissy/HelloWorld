@@ -1,11 +1,13 @@
 package com.github.capitansissy.pre.compile;
 
 import com.github.capitansissy.constants.Defaults;
+import com.github.capitansissy.constants.Properties;
 import com.github.capitansissy.security.AES;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.*;
+
 
 public class Converter {
   private static final String PLAIN_TEXT_ENTITY = "/src/main/resources/plain-text/%1$s_plain-text.properties";

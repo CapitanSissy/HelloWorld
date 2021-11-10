@@ -1,16 +1,11 @@
 name: Hello World
 
-env:
-  global:
-    - CODECOV_TOKEN='5185ac37-4bfa-475a-8c93-b2acf189019b'
-
-sudo: required
 language: java
 
 jdk:
   - openjdk8
 
-# script: "mvn cobertura:cobertura"
+sudo: false
 
 on:
   push:
@@ -31,8 +26,9 @@ before_install:
   - mvn -f Java/NOCR/Service/pom.xml clean
 
 script:
+  - mvn cobertura:cobertura
   - mvn -f Java/NOCR/Service/pom.xml test
   - mvn -f Java/NOCR/Service/pom.xml package
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t '5185ac37-4bfa-475a-8c93-b2acf189019b'
