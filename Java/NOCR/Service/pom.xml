@@ -162,8 +162,12 @@
             </goals>
             <configuration>
               <target>
+                <mkdir dir="${basedir}/obfuscated"/>
                 <delete file="${project.build.directory}/${project.build.finalName}.jar"/>
                 <delete file="${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar"/>
+                <copy
+                  file="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"
+                  tofile="${basedir}/obfuscated/helloworld_latest_version.jar"/>
                 <move
                   file="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"
                   tofile="${project.build.directory}/release/${project.build.finalName}.jar"/>
