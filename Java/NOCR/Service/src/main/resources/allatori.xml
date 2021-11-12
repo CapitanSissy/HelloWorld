@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<config>
+  <!--  <guide>-->
+  <!--    http://www.allatori.com/doc.html#structure-->
+  <!--  </guide>-->
+
+  <input>
+    <jar in="helloworld_v1.0.5-rc2021-10-30-jar-with-dependencies.jar"
+         out="helloworld_v1.0.5-rc2021-10-30-jar-with-dependencies_obfuscated.jar"/>
+  </input>
+
+  <keep-names>
+    <class access="protected+">
+      <field access="protected+"/>
+      <method access="protected+"/>
+    </class>
+  </keep-names>
+
+  <watermark key="secure-key-to-extract-watermark" value="Customer: NOCR"/>
+
+  <property name="log-file" value="obfuscated-log.xml"/>
+
+  <ignore-classes>
+    <class template="class com.intellij.*"/>
+    <class template="class com.oracle.*"/>
+    <class template="class com.sun.*"/>
+    <class template="class gnu.trove.*"/>
+    <class template="class java.*"/>
+    <class template="class javax.*"/>
+    <class template="class jdk.internal.*"/>
+    <class template="class jdk.net"/>
+    <class template="class jdk.xml.internal"/>
+    <class template="class junit.*"/>
+    <class template="class org.apache.*"/>
+    <class template="class org.hamcrest"/>
+    <class template="class org.ietf.jgss"/>
+    <class template="class org.jcp.*"/>
+    <class template="class org.jdom.*"/>
+    <class template="class org.jetbrains.annotations"/>
+    <class template="class org.junit.*"/>
+    <class template="class org.omg.*"/>
+    <class template="class org.relaxng.*"/>
+    <class template="class org.w3c.*"/>
+    <class template="class org.xml.*"/>
+    <class template="class sun.applet.*"/>
+    <class template="class sun.*"/>
+
+    <class template="class com.apache.*"/>
+    <class template="class org.apache.http.entity.StringEntity"/>
+    <class template="class org.apache.cxf.*"/>
+  </ignore-classes>
+</config>

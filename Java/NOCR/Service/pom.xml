@@ -30,11 +30,12 @@
         </includes>
         <excludes>
           <exclude>plain-text/**</exclude>
+          <exclude>allatori.xml</exclude>
         </excludes>
       </resource>
     </resources>
     <plugins>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ maven-compiler-plugin }$$$$$]   -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -44,7 +45,7 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ buildnumber-maven-plugin }$$$$$]   -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>buildnumber-maven-plugin</artifactId>
@@ -68,7 +69,7 @@
           </execution>
         </executions>
       </plugin>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ maven-assembly-plugin }$$$$$]   -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>3.1.1</version>
@@ -94,7 +95,7 @@
           </execution>
         </executions>
       </plugin>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ properties-maven-plugin }$$$$$]   -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>properties-maven-plugin</artifactId>
@@ -113,7 +114,7 @@
           </execution>
         </executions>
       </plugin>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ exec-maven-plugin }$$$$$]   -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -125,54 +126,33 @@
               <goal>java</goal>
             </goals>
           </execution>
+          <execution>
+            <id>run-allatori</id>
+            <phase>package</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
         </executions>
         <configuration>
           <mainClass>com.github.capitansissy.pre.compile.Converter</mainClass>
           <classpathScope>test</classpathScope>
+          <executable>java</executable>
+          <arguments>
+            <argument>-Xms128m</argument>
+            <argument>-Xmx512m</argument>
+            <argument>-jar</argument>
+            <argument>${basedir}\allatori\lib\allatori.jar</argument>
+            <argument>${basedir}\target\allatori.xml</argument>
+          </arguments>
         </configuration>
       </plugin>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ maven-antrun-plugin }$$$$$]   -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
         <version>1.8</version>
         <executions>
-          <!--   [##########]   -->
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <id>obfuscate</id>
-            <configuration>
-              <tasks>
-                <property name="runtime_classpath" refid="maven.runtime.classpath"/>
-                <taskdef name="yguard" classname="com.yworks.yguard.YGuardTask" classpath="${runtime_classpath}"/>
-                <yguard>
-                  <inoutpair
-                    in="${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar"
-                    out="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"/>
-                  <attribute name="Deprecated"/>
-                  <shrink
-                    logfile="${project.build.directory}/yshrink.log.xml">
-                    <keep>
-                      <class classes="protected"
-                             methods="protected"
-                             fields="protected"/>
-                      <method name="void main(java.lang.String[])" class="${mainclass}"/>
-                    </keep>
-                  </shrink>
-                  <rename mainclass="${mainclass}" logfile="${project.build.directory}/yguard.log.xml">
-                    <keep>
-                      <class classes="protected" methods="protected" fields="protected"/>
-                    </keep>
-                    <!-- Tutorial URL: https://github.com/yWorks/yGuard/tree/master/examples -->
-                    <!-- TODO -->
-                  </rename>
-                </yguard>
-              </tasks>
-            </configuration>
-          </execution>
           <!--   [##########]   -->
           <execution>
             <id>rename-jar-with-dependencies</id>
@@ -207,11 +187,11 @@
             </configuration>
           </execution>
           <!--   [##########]   -->
-          <!--   [##########]   -->
         </executions>
       </plugin>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ maven-resources-plugin }$$$$$]   -->
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
@@ -245,11 +225,30 @@
             </configuration>
           </execution>
           <!--   [##########]   -->
+          <execution>
+            <id>copy-and-filter-allatori-config</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/allatori</directory>
+                  <includes>
+                    <include>allatori.xml</include>
+                  </includes>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
           <!--   [##########]   -->
           <!--   [##########]   -->
         </executions>
       </plugin>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ maven-jar-plugin }$$$$$]   -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -262,7 +261,7 @@
           </archive>
         </configuration>
       </plugin>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ maven-surefire-plugin }$$$$$]   -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -275,7 +274,7 @@
           </excludes>
         </configuration>
       </plugin>
-      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$${ jacoco-maven-plugin }$$$$$]   -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -305,6 +304,8 @@
         </executions>
       </plugin>
       <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$$$$$$$]   -->
+      <!--   [$$$$$$$$$$]   -->
     </plugins>
   </build>
   <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->
@@ -318,12 +319,6 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>1.7.22</version>
-    </dependency>
-    <dependency>
-      <groupId>com.yworks</groupId>
-      <artifactId>yguard</artifactId>
-      <version>3.0.0</version>
-      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.github.capitansissy</groupId>
