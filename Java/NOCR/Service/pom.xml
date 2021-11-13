@@ -198,15 +198,15 @@
               <goal>run</goal>
             </goals>
             <configuration>
-<!--              <target name="-obfuscate" unless="do.not.compile">-->
-<!--                <taskdef name="allatori" classname="com.allatori.ant.ObfuscatorTask"-->
-<!--                         classpath="${basedir}/allatori/lib/allatori.jar"/>-->
-<!--                <allatori config="allatori.xml"/>-->
-<!--                <property name="crude.fileName"-->
-<!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar"/>-->
-<!--                <property name="obfuscated.fileName"-->
-<!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"/>-->
-<!--              </target>-->
+              <!--              <target name="-obfuscate" unless="do.not.compile">-->
+              <!--                <taskdef name="allatori" classname="com.allatori.ant.ObfuscatorTask"-->
+              <!--                         classpath="${basedir}/allatori/lib/allatori.jar"/>-->
+              <!--                <allatori config="allatori.xml"/>-->
+              <!--                <property name="crude.fileName"-->
+              <!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar"/>-->
+              <!--                <property name="obfuscated.fileName"-->
+              <!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"/>-->
+              <!--              </target>-->
             </configuration>
           </execution>
           <!--   [##########]   -->
@@ -380,6 +380,13 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>1.7.22</version>
+    </dependency>
+    <dependency>
+      <groupId>com.aminography</groupId>
+      <artifactId>primecalendar</artifactId>
+      <version>1.2.17</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/primecalendar-1.2.17.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
