@@ -36,15 +36,7 @@
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.22" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.22" level="project" />
-    <orderEntry type="module-library">
-      <library name="Maven: com.aminography:primecalendar:1.2.17">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/primecalendar-1.2.17.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="Maven: com.aminography:primecalendar:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.5.30" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.5.30" level="project" />
     <orderEntry type="library" name="Maven: org.threeten:threetenbp:1.5.1" level="project" />

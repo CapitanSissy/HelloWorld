@@ -1,0 +1,1 @@
+"C:\Program Files\JetBrains\IntelliJ\Idea\plugins\maven\lib\maven3\bin\mvn" org.apache.maven.plugins:maven-install-plugin:2.5.1:install-file -Dfile=${basedir}/lib/primecalendar-1.2.17.jar -DgroupId=com.aminography -DartifactId=primecalendar -Dversion=1.2.17 -Dpackaging=jar -DlocalRepositoryPath=${basedir}/lib
