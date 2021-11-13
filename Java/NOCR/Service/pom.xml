@@ -191,6 +191,25 @@
             </configuration>
           </execution>
           <!--   [##########]   -->
+          <execution>
+            <id>set-property-for-obfuscate</id>
+            <phase>package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+<!--              <target name="-obfuscate" unless="do.not.compile">-->
+<!--                <taskdef name="allatori" classname="com.allatori.ant.ObfuscatorTask"-->
+<!--                         classpath="${basedir}/allatori/lib/allatori.jar"/>-->
+<!--                <allatori config="allatori.xml"/>-->
+<!--                <property name="crude.fileName"-->
+<!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar"/>-->
+<!--                <property name="obfuscated.fileName"-->
+<!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"/>-->
+<!--              </target>-->
+            </configuration>
+          </execution>
+          <!--   [##########]   -->
         </executions>
       </plugin>
       <!--   [$$$$${ maven-resources-plugin }$$$$$]   -->
@@ -315,6 +334,44 @@
   <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->
   <dependencies>
     <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>2.3.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.activation</groupId>
+      <artifactId>javax.activation-api</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.ws</groupId>
+      <artifactId>jaxws-api</artifactId>
+      <version>2.3.0</version>
+    </dependency>
+    <!--[ Allatori dependencies ]-->
+    <dependency>
+      <groupId>javax.jms</groupId>
+      <artifactId>javax.jms-api</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>javax.mail-api</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.activation</groupId>
+      <artifactId>activation</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->
+    <dependency>
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
       <version>13.0</version>
@@ -324,6 +381,27 @@
       <artifactId>slf4j-simple</artifactId>
       <version>1.7.22</version>
     </dependency>
+    <dependency>
+      <groupId>com.aminography</groupId>
+      <artifactId>primecalendar</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+      <version>1.5.30</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib-common</artifactId>
+      <version>1.5.30</version>
+    </dependency>
+    <dependency>
+      <groupId>org.threeten</groupId>
+      <artifactId>threetenbp</artifactId>
+      <version>1.5.1</version>
+    </dependency>
+
     <dependency>
       <groupId>com.github.capitansissy</groupId>
       <artifactId>constants</artifactId>
@@ -343,6 +421,11 @@
           <artifactId>logback-classic</artifactId>
         </exclusion>
       </exclusions>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.capitansissy</groupId>
+      <artifactId>logger</artifactId>
       <version>1.0</version>
     </dependency>
     <dependency>

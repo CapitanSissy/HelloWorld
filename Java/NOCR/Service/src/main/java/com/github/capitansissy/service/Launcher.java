@@ -1,15 +1,20 @@
 package com.github.capitansissy.service;
 
+import com.github.capitansissy.Logger;
 import com.github.capitansissy.constants.Defaults;
+import com.github.capitansissy.service.implementation.GeneralImpl;
 import com.github.capitansissy.usb.UsbDetector;
 import com.github.capitansissy.usb.UsbDevice;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import javax.xml.ws.Endpoint;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
-public class Launcher {
+public class Launcher implements Serializable {
+  private static Logger logger = new Logger();
   private static boolean IS_ATTACHED = false;
 
   @NotNull
@@ -20,6 +25,14 @@ public class Launcher {
 
   private static void run() {
     System.out.println(String.format("Hello %s", companyName()));
+    Endpoint.publish(String.format("%1$s://%2$s%3$s:%4$s/%5$s/%6$s",
+      Defaults.URL.PROTOCOL,
+      Defaults.URL.SLD,
+      Defaults.URL.TLD,
+      Defaults.URL.PORTS.GENERAL,
+      Defaults.URL.DIRECTORY,
+      Defaults.URL.LOCATIONS.HELLOWORLD), new GeneralImpl());
+    logger.setLog(String.format("General interface running on port %1$s", Defaults.URL.PORTS.GENERAL), Defaults.Log4J.DEBUG);
   }
 
   public static void main(String[] args) throws IOException {
@@ -36,6 +49,7 @@ public class Launcher {
     if (IS_ATTACHED) {
       run();
     } else {
+      logger.setLog("Hardware key not detected", Defaults.Log4J.DEBUG);
       System.out.println("Hardware key not detected");
     }
 

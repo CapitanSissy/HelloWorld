@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Database/Database.iml" filepath="$PROJECT_DIR$/Database/Database.iml" />
       <module fileurl="file://$PROJECT_DIR$/Encapsulation/Encapsulation.iml" filepath="$PROJECT_DIR$/Encapsulation/Encapsulation.iml" />
       <module fileurl="file://$PROJECT_DIR$/Enumeration/Enumeration.iml" filepath="$PROJECT_DIR$/Enumeration/Enumeration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Logger/Logger.iml" filepath="$PROJECT_DIR$/Logger/Logger.iml" />
       <module fileurl="file://$PROJECT_DIR$/Messages/Messages.iml" filepath="$PROJECT_DIR$/Messages/Messages.iml" />
       <module fileurl="file://$PROJECT_DIR$/Security/Security.iml" filepath="$PROJECT_DIR$/Security/Security.iml" />
       <module fileurl="file://$PROJECT_DIR$/Service/Service.iml" filepath="$PROJECT_DIR$/Service/Service.iml" />

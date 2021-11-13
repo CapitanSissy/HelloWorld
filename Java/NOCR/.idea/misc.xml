@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/Wrapper/pom.xml" />
         <option value="$PROJECT_DIR$/Usb/pom.xml" />
         <option value="$PROJECT_DIR$/Enumeration/pom.xml" />
+        <option value="$PROJECT_DIR$/Logger/pom.xml" />
       </list>
     </option>
   </component>

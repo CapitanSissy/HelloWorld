@@ -7,13 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Security" />
-        <module name="Service" />
-        <module name="Stub" />
-        <module name="Usb" />
-        <module name="Encapsulation" />
-        <module name="Enumeration" />
         <module name="Database" />
+        <module name="Service" />
+        <module name="Logger" />
+        <module name="Stub" />
+        <module name="Encapsulation" />
+        <module name="Usb" />
+        <module name="Enumeration" />
+        <module name="Security" />
         <module name="Wrapper" />
         <module name="Messages" />
         <module name="Constants" />
@@ -24,6 +25,7 @@
       <module name="Database" target="1.8" />
       <module name="Encapsulation" target="1.8" />
       <module name="Enumeration" target="1.8" />
+      <module name="Logger" target="1.8" />
       <module name="Messages" target="1.8" />
       <module name="Security" target="1.8" />
       <module name="Service" target="1.8" />

@@ -9,6 +9,11 @@
          out="helloworld_v1.0.5-rc2021-10-30-jar-with-dependencies_obfuscated.jar"/>
   </input>
 
+<!--  <input>-->
+<!--    <jar in="${crude.fileName}"-->
+<!--         out="${obfuscated.fileName}"/>-->
+<!--  </input>-->
+
   <keep-names>
     <class access="protected+">
       <field access="protected+"/>
@@ -25,8 +30,9 @@
   <property name="control-flow-obfuscation" value="enable"/>
   <property name="extensive-flow-obfuscation" value="maximum"/>
   <property name="packages-naming" value="abc"/>
-  <property name="classes-naming" value="abc"/>
-  <property name="methods-naming" value="keywords"/>
+  <property name="classes-naming" value="123"/>
+  <property name="methods-naming" value="abc"/>
+  <property name="fields-naming" value="123"/>
   <property name="update-resource-contents" value="enable:UTF-8"/>
   <property name="line-numbers" value="obfuscate"/>
   <property name="finalize" value="enable"/>
@@ -58,6 +64,8 @@
     <class template="class org.xml.*"/>
     <class template="class sun.applet.*"/>
     <class template="class sun.*"/>
+    <class template="class com.sun.*"/>
+    <class template="class com.aminography.*"/>
 
     <class template="class com.apache.*"/>
     <class template="class org.apache.http.entity.StringEntity"/>
