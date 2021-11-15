@@ -6,12 +6,13 @@ import com.aminography.primecalendar.persian.PersianCalendar;
 import com.github.capitansissy.Logger;
 import com.github.capitansissy.constants.Defaults;
 import com.github.capitansissy.constants.Tools;
-import com.github.capitansissy.constants.webservice.Actions;
-import com.github.capitansissy.constants.webservice.Implementations;
-import com.github.capitansissy.constants.webservice.Operations;
+import com.github.capitansissy.constants.webservice.soap.Actions;
+import com.github.capitansissy.constants.webservice.soap.Implementations;
+import com.github.capitansissy.constants.webservice.soap.Operations;
 import com.github.capitansissy.enumeration.Language;
 import com.github.capitansissy.security.AES;
-import com.github.capitansissy.service.interfaces.General;
+import com.github.capitansissy.service.interfaces.restful.RGeneral;
+import com.github.capitansissy.service.interfaces.soap.SGeneral;
 
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
@@ -28,7 +29,7 @@ import java.util.Objects;
   serviceName = Implementations.GENERAL_SERVICE_NAME,
   portName = Implementations.GENERAL_PORT_NAME)
 
-public class GeneralImpl implements General {
+public class GeneralImpl implements SGeneral, RGeneral {
   private Logger logger = new Logger();
 
   @Override
@@ -44,6 +45,11 @@ public class GeneralImpl implements General {
     } else {
       return new PersianCalendar().toHijri().getLongDateString();
     }
+  }
+
+  @Override
+  public String GetInput(String input) {
+    return "You said: " + input + "";
   }
 
   @Override
@@ -69,4 +75,10 @@ public class GeneralImpl implements General {
       return String.format("%1$s-rc%2$s", Tools.getResourceValue("structure", "version.number"), new SimpleDateFormat(Defaults.DateTime.UNDERSCORE).format(new Date()));
     }
   }
+
+  @Override
+  public String sayHello() {
+    return "Hello world!";
+  }
+
 }

@@ -15,6 +15,7 @@
 <!--  </input>-->
 
   <keep-names>
+    <class template="class com.github.capitansissy.service.pointer.*" stop="true"/>
     <class access="protected+">
       <field access="protected+"/>
       <method access="protected+"/>
@@ -36,8 +37,10 @@
   <property name="update-resource-contents" value="enable:UTF-8"/>
   <property name="line-numbers" value="obfuscate"/>
   <property name="finalize" value="enable"/>
+
   <property name="synthetize-methods" value="all"/>
   <property name="synthetize-fields" value="all"/>
+
   <property name="output-jar-compression-level" value="9"/>
 
   <ignore-classes>
@@ -66,9 +69,19 @@
     <class template="class sun.*"/>
     <class template="class com.sun.*"/>
     <class template="class com.aminography.*"/>
+    <class template="class jakarta.xml.bind.*"/>
+    <class template="class jakarta.annotation.*"/>
+    <class template="class jakarta.inject.*"/>
+    <class template="class jakarta.ws.*"/>
+    <class template="class org.glassfish.*"/>
+    <class template="class org.osgi.framework.*"/>
+    <class template="class java.util.concurrent.*"/>
 
     <class template="class com.apache.*"/>
     <class template="class org.apache.http.entity.StringEntity"/>
     <class template="class org.apache.cxf.*"/>
+
+    <class template="class com.github.capitansissy.constants.webservice.restful.*"/>
+    <class template="class com.github.capitansissy.service.pointer.General"/>
   </ignore-classes>
 </config>

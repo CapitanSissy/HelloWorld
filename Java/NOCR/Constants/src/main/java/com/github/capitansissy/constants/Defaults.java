@@ -11,11 +11,18 @@ public class Defaults implements Serializable {
   public static final String CHARSET = "UTF-8";
   static final String OS_NAME = System.getProperty("os.name");
 
+  static class Text {
+    static final String REGULAR_EXPRESSION_FOR_UNREFINED_TEXT = "[^a-zA-Z0-9\\u0020\\u200C\\u005F\\p{InArabic}&&\\PN]";
+  }
+
+  public static class MediaType {
+    public static final String TEXT_HTML = "text/html; charset=UTF-8";
+  }
+
   public static class Slugs {
     public static final String None = "";
     public static final String Slash = "/";
     public static final String Underscore = "_";
-
   }
 
   public static class Log4J {
@@ -45,7 +52,8 @@ public class Defaults implements Serializable {
     }
 
     public static class PORTS {
-      public static final String GENERAL = "8081";
+      public static final String SOAP_GENERAL = "8081";
+      public static final String RESTFUL_GENERAL = "8082";
     }
   }
 

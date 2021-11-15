@@ -85,4 +85,10 @@ public class Tools implements Serializable {
       replaceAll("9", "٩");
   }
 
+  @NotNull
+  public static String getText(@NotNull String unrefinedText) {
+    return unrefinedText.trim().replaceAll(Defaults.Text.REGULAR_EXPRESSION_FOR_UNREFINED_TEXT, Defaults.Slugs.None);
+  }
+
+
 }

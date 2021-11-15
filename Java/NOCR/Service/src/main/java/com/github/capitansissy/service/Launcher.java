@@ -3,14 +3,21 @@ package com.github.capitansissy.service;
 import com.github.capitansissy.Logger;
 import com.github.capitansissy.constants.Defaults;
 import com.github.capitansissy.service.implementation.GeneralImpl;
+import com.github.capitansissy.service.interfaces.restful.RGeneral;
+import com.github.capitansissy.service.pointer.General;
 import com.github.capitansissy.usb.UsbDetector;
 import com.github.capitansissy.usb.UsbDevice;
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.hk2.utilities.binding.AbstractBinder;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.io.Serializable;
+import java.net.URI;
 import java.util.List;
 
 public class Launcher implements Serializable {
@@ -23,16 +30,57 @@ public class Launcher implements Serializable {
     return "NOCR";
   }
 
-  private static void run() {
-    System.out.println(String.format("Hello %s", companyName()));
-    Endpoint.publish(String.format("%1$s://%2$s%3$s:%4$s/%5$s/%6$s",
+  // Grizzly HTTP server
+  static HttpServer startServer() {
+    final ResourceConfig config = new ResourceConfig();
+    config.register(General.class);
+    config.register(new AbstractBinder() {
+      @Override
+      protected void configure() {
+        bind(GeneralImpl.class).to(RGeneral.class);
+      }
+    });
+//    config.register(AutoScan.class);
+    logger.setLog("Starting RESTful Server........", Defaults.Log4J.DEBUG);
+    return GrizzlyHttpServerFactory.createHttpServer(URI.create(String.format("%1$s://%2$s%3$s:%4$s/%5$s/%6$s",
       Defaults.URL.PROTOCOL,
       Defaults.URL.SLD,
       Defaults.URL.TLD,
-      Defaults.URL.PORTS.GENERAL,
+      Defaults.URL.PORTS.RESTFUL_GENERAL,
       Defaults.URL.DIRECTORY,
-      Defaults.URL.LOCATIONS.HELLOWORLD), new GeneralImpl());
-    logger.setLog(String.format("General interface running on port %1$s", Defaults.URL.PORTS.GENERAL), Defaults.Log4J.DEBUG);
+      Defaults.URL.LOCATIONS.HELLOWORLD)), config);
+  }
+
+  private static void run() {
+    try {
+      logger.setLog(String.format("Hello %s", companyName()), Defaults.Log4J.DEBUG);
+      // SOAP
+      Endpoint.publish(String.format("%1$s://%2$s%3$s:%4$s/%5$s/%6$s",
+        Defaults.URL.PROTOCOL,
+        Defaults.URL.SLD,
+        Defaults.URL.TLD,
+        Defaults.URL.PORTS.SOAP_GENERAL,
+        Defaults.URL.DIRECTORY,
+        Defaults.URL.LOCATIONS.HELLOWORLD), new GeneralImpl());
+      logger.setLog(String.format("General interface running on port %1$s", Defaults.URL.PORTS.SOAP_GENERAL), Defaults.Log4J.DEBUG);
+
+      // RESTful
+      HttpServer httpServer = startServer();
+      Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+        try {
+          logger.setLog("Shutting down the application...", Defaults.Log4J.DEBUG);
+          httpServer.shutdownNow();
+          logger.setLog("Done, exit.", Defaults.Log4J.DEBUG);
+        } catch (Exception e) {
+          logger.setLog(e.getMessage(), Defaults.Log4J.DEBUG);
+        }
+      }));
+
+      // block and wait shut down signal, CTRL+C
+      Thread.currentThread().join();
+    } catch (Exception e) {
+      logger.setLog(e.getMessage(), Defaults.Log4J.FATAL);
+    }
   }
 
   public static void main(String[] args) throws IOException {
@@ -53,14 +101,5 @@ public class Launcher implements Serializable {
       System.out.println("Hardware key not detected");
     }
 
-    // Display all the USB storage devices currently connected
-    // usbDetector.getRemovableDevices().forEach(System.out::println);
-
-    // Add an event listener to be notified when an USB storage device is connected or removed
-    // usbDetector.addDriveListener(System.out::println);
-    // usbDetector.removeDriveListener(System.out::println);
-
-    // Unmount a device
-    // usbDetector.unmountStorageDevice(usbDetector.getRemovableDevices().get(0));
   }
 }

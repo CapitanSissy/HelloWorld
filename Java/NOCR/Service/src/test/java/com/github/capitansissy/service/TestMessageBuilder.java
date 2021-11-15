@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class TestMessageBuilder {
 
   @Test
-  public void testNameMkyong() {
+  public void testNameWorld() {
     MessageBuilder messageBuilder = new MessageBuilder();
     assertEquals("Hello World", messageBuilder.getMessage("World"));
   }

@@ -1,5 +1,6 @@
 package simple;
 
+import com.github.capitansissy.service.TestGeneral;
 import com.github.capitansissy.service.TestMessageBuilder;
 import junit.framework.JUnit4TestAdapter;
 import org.jetbrains.annotations.Contract;
@@ -13,7 +14,8 @@ import simple.string.TestHelloWorld;
 @Suite.SuiteClasses({
   TestHelloWorld.class,
   TestOperations.class,
-  TestMessageBuilder.class
+  TestMessageBuilder.class,
+  TestGeneral.class
 })
 
 public class AllInOne {

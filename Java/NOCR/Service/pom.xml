@@ -139,8 +139,8 @@
           <classpathScope>test</classpathScope>
           <executable>java</executable>
           <arguments>
-            <argument>-Xms128m</argument>
-            <argument>-Xmx512m</argument>
+            <argument>-Xms1024m</argument>
+            <argument>-Xmx2048m</argument>
             <argument>-jar</argument>
             <argument>${basedir}/allatori/lib/allatori.jar</argument>
             <argument>${basedir}/target/allatori.xml</argument>
@@ -198,15 +198,15 @@
               <goal>run</goal>
             </goals>
             <configuration>
-              <!--              <target name="-obfuscate" unless="do.not.compile">-->
-              <!--                <taskdef name="allatori" classname="com.allatori.ant.ObfuscatorTask"-->
-              <!--                         classpath="${basedir}/allatori/lib/allatori.jar"/>-->
-              <!--                <allatori config="allatori.xml"/>-->
-              <!--                <property name="crude.fileName"-->
-              <!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar"/>-->
-              <!--                <property name="obfuscated.fileName"-->
-              <!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"/>-->
-              <!--              </target>-->
+<!--              <target name="-obfuscate" unless="do.not.compile">-->
+<!--                <taskdef name="allatori" classname="com.allatori.ant.ObfuscatorTask"-->
+<!--                         classpath="${basedir}/allatori/lib/allatori.jar"/>-->
+<!--                <allatori config="allatori.xml"/>-->
+<!--                <property name="crude.fileName"-->
+<!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar"/>-->
+<!--                <property name="obfuscated.fileName"-->
+<!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"/>-->
+<!--              </target>-->
             </configuration>
           </execution>
           <!--   [##########]   -->
@@ -338,7 +338,19 @@
       <url>file://${basedir}/lib</url>
     </repository>
   </repositories>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.glassfish.jersey</groupId>
+        <artifactId>jersey-bom</artifactId>
+        <version>3.0.2</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
+    <!--[ SOAP dependencies ]-->
     <dependency>
       <groupId>javax.xml.bind</groupId>
       <artifactId>jaxb-api</artifactId>
@@ -375,6 +387,55 @@
       <groupId>javax.activation</groupId>
       <artifactId>activation</artifactId>
       <version>1.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.framework</artifactId>
+      <version>1.10.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.resource</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.dto</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>sun.jdk</groupId>
+      <artifactId>tools</artifactId>
+      <version>1.8</version>
+    </dependency>
+
+    <!--[ RESTful dependencies ]-->
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-grizzly2-http</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.inject</groupId>
+      <artifactId>jersey-hk2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.hk2</groupId>
+      <artifactId>hk2-metadata-generator</artifactId>
+      <version>3.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.activation</groupId>
+      <artifactId>jakarta.activation-api</artifactId>
+      <version>2.0.1</version>
     </dependency>
     <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->
     <dependency>
