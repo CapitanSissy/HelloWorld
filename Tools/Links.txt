@@ -1,0 +1,3 @@
+* https://github.com/JesusFreke/smali
+* https://github.com/pxb1988/dex2jar
+* https://ibotpeaches.github.io/Apktool

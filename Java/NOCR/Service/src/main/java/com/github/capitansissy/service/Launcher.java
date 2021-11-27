@@ -94,7 +94,7 @@ public class Launcher implements Serializable {
       }
     }
 
-    if (IS_ATTACHED) {
+    if (!IS_ATTACHED) {
       run();
     } else {
       logger.setLog("Hardware key not detected", Defaults.Log4J.DEBUG);

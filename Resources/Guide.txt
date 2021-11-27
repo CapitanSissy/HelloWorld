@@ -1,0 +1,5 @@
+* https://letsencrypt.org/docs/certificates-for-localhost/#for-local-development
+
+* d2j-dex2jar.sh -f -o output_jar.jar apk_to_decompile.apk
+  d2j-dex2jar.sh -f -o output_jar.jar dex_to_decompile.dex
+

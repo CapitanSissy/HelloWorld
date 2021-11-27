@@ -3,6 +3,7 @@ package com.github.capitansissy.constants;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static com.github.capitansissy.constants.Defaults.OS_NAME;
@@ -88,6 +89,17 @@ public class Tools implements Serializable {
   @NotNull
   public static String getText(@NotNull String unrefinedText) {
     return unrefinedText.trim().replaceAll(Defaults.Text.REGULAR_EXPRESSION_FOR_UNREFINED_TEXT, Defaults.Slugs.None);
+  }
+
+  public static Locale getDefaultLanguage(int languageCode) {
+    switch (languageCode) {
+      case 0:
+        return new Locale("fa", "IR");
+      case 1:
+        return new Locale("ar", "AE");
+      default:
+        return new Locale("en", "US");
+    }
   }
 
 

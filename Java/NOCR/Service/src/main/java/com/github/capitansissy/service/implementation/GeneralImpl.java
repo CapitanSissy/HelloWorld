@@ -10,6 +10,7 @@ import com.github.capitansissy.constants.webservice.soap.Actions;
 import com.github.capitansissy.constants.webservice.soap.Implementations;
 import com.github.capitansissy.constants.webservice.soap.Operations;
 import com.github.capitansissy.enumeration.Language;
+import com.github.capitansissy.messages.ResourceAsStream;
 import com.github.capitansissy.security.AES;
 import com.github.capitansissy.service.interfaces.restful.RGeneral;
 import com.github.capitansissy.service.interfaces.soap.SGeneral;
@@ -31,6 +32,14 @@ import java.util.Objects;
 
 public class GeneralImpl implements SGeneral, RGeneral {
   private Logger logger = new Logger();
+  private ResourceAsStream resource = new ResourceAsStream(
+    Tools.getDefaultLanguage(
+      Integer.parseInt(
+        Objects.requireNonNull(
+          AES.decrypt(
+            Tools.getResourceValue("structure", "default.language"),
+            Defaults.INTERNAL_SECURITY_KEY))
+      )));
 
   @Override
   @WebMethod(operationName = Operations.GLOBAL_GET_DATE, action = Actions.GLOBAL_GET_DATE)
@@ -49,7 +58,7 @@ public class GeneralImpl implements SGeneral, RGeneral {
 
   @Override
   public String GetInput(String input) {
-    return "You said: " + input + "";
+    return Objects.requireNonNull(AES.decrypt(resource.get("you.said"), Defaults.INTERNAL_SECURITY_KEY)).concat(Defaults.Slugs.Space).concat(Tools.getText(input));
   }
 
   @Override
@@ -78,7 +87,7 @@ public class GeneralImpl implements SGeneral, RGeneral {
 
   @Override
   public String sayHello() {
-    return "Hello world!";
+    return AES.decrypt(resource.get("hello.world"), Defaults.INTERNAL_SECURITY_KEY);
   }
 
 }
