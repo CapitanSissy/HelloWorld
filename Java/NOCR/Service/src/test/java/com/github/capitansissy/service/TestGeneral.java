@@ -33,19 +33,19 @@ public class TestGeneral {
 
 //  @Test
 //  public void testHello() {
-//    String response = target.path(Paths.A).request().get(String.class);
+//    String response = target.path(Paths.BASE_PATH).request().get(String.class);
 //    assertEquals("Hello world!", response);
 //  }
 //
 //  @Test
 //  public void testHelloName() {
-//    String response = target.path(Paths.A.concat("/capitansissy")).request().get(String.class);
+//    String response = target.path(Paths.BASE_PATH.concat("/capitansissy")).request().get(String.class);
 //    assertEquals("Hello capitansissy!", response);
 //  }
 //
 //  @Test
 //  public void testHelloHK2() {
-//    String response = target.path(Paths.A.concat(Paths.C)).request().get(String.class);
+//    String response = target.path(Paths.BASE_PATH.concat(Paths.GET_VERSION)).request().get(String.class);
 //    assertEquals("Hello world from HK2", response);
 //  }
 

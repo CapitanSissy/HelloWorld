@@ -76,7 +76,7 @@ public class Launcher implements Serializable {
         }
       }));
 
-      // block and wait shut down signal, CTRL+C
+      // block and wait shut down signal, CTRL + C
       Thread.currentThread().join();
     } catch (Exception e) {
       logger.setLog(e.getMessage(), Defaults.Log4J.FATAL);

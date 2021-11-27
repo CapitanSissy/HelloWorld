@@ -10,7 +10,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 
-@Path(Paths.A)
+@Path(Paths.BASE_PATH)
 public class General {
   @Inject
   private RGeneral general;
@@ -21,21 +21,21 @@ public class General {
     return general.sayHello();
   }
 
-  @Path(Paths.B)
+  @Path(Paths.INPUT_PATH)
   @GET
   @Produces({Defaults.MediaType.TEXT_HTML})
   public String GetInput(@PathParam(PathParams.A) String name) {
     return general.GetInput(name);
   }
 
-  @Path(Paths.C)
+  @Path(Paths.GET_VERSION)
   @GET
   @Produces({Defaults.MediaType.TEXT_HTML})
   public String GetVersion() {
     return general.GetVersion();
   }
 
-  @Path(Paths.D)
+  @Path(Paths.GET_DATE)
   @GET
   @Produces({Defaults.MediaType.TEXT_HTML})
   public String GetDate() {
