@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.github.capitansissy.constants.Defaults.OS_NAME;
 import static com.github.capitansissy.constants.OSType.*;
@@ -102,5 +104,14 @@ public class Tools implements Serializable {
     }
   }
 
+  public static String getIPAddress(String ip) {
+    String tempIP = Defaults.Slugs.None;
+    Pattern pattern = Pattern.compile(Defaults.REGULAR_EXPRESSION_FOR_IP_ADDRESS);
+    Matcher matcher = pattern.matcher(ip);
+    while (matcher.find()) {
+      tempIP = matcher.group();
+    }
+    return tempIP;
+  }
 
 }

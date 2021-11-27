@@ -14,13 +14,17 @@ import com.github.capitansissy.messages.ResourceAsStream;
 import com.github.capitansissy.security.AES;
 import com.github.capitansissy.service.interfaces.restful.RGeneral;
 import com.github.capitansissy.service.interfaces.soap.SGeneral;
+import com.sun.net.httpserver.HttpExchange;
 
+import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -41,6 +45,9 @@ public class GeneralImpl implements SGeneral, RGeneral {
             Defaults.INTERNAL_SECURITY_KEY))
       )));
 
+  @Resource
+  private WebServiceContext serviceContext;
+
   @Override
   @WebMethod(operationName = Operations.GLOBAL_GET_DATE, action = Actions.GLOBAL_GET_DATE)
   @WebResult(name = Operations.GLOBAL_GET_DATE, partName = Operations.GLOBAL_GET_DATE_RESPONSE, targetNamespace = Defaults.TARGET_NAME_SPACE)
@@ -48,6 +55,13 @@ public class GeneralImpl implements SGeneral, RGeneral {
   @ResponseWrapper(targetNamespace = Defaults.TARGET_NAME_SPACE)
   @XmlElement(name = Operations.GLOBAL_GET_DATE, namespace = Defaults.TARGET_NAME_SPACE)
   public String GetDate() {
+    MessageContext messageContext = serviceContext.getMessageContext();
+    System.out.println(Tools.getIPAddress(
+      ((HttpExchange) messageContext.get(Defaults.MESSAGE_CONTEXT_KEY))
+        .getRemoteAddress()
+        .getAddress()
+        .toString()));
+
     if (Objects.equals(AES.decrypt(Tools.getResourceValue("structure", "default.language"),
       Defaults.INTERNAL_SECURITY_KEY), String.valueOf(Language.Farsi.getCode()))) {
       return new PersianCalendar().toPersian().getLongDateString();
