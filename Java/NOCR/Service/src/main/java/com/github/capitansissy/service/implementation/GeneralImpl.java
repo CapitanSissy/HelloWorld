@@ -9,7 +9,7 @@ import com.github.capitansissy.constants.Tools;
 import com.github.capitansissy.constants.webservice.soap.Actions;
 import com.github.capitansissy.constants.webservice.soap.Implementations;
 import com.github.capitansissy.constants.webservice.soap.Operations;
-import com.github.capitansissy.enumeration.Language;
+import com.github.capitansissy.encapsulation.Language;
 import com.github.capitansissy.messages.ResourceAsStream;
 import com.github.capitansissy.security.AES;
 import com.github.capitansissy.service.interfaces.restful.RGeneral;
@@ -36,14 +36,13 @@ import java.util.Objects;
 
 public class GeneralImpl implements SGeneral, RGeneral {
   private Logger logger = new Logger();
-  private ResourceAsStream resource = new ResourceAsStream(
-    Tools.getDefaultLanguage(
-      Integer.parseInt(
-        Objects.requireNonNull(
-          AES.decrypt(
-            Tools.getResourceValue("structure", "default.language"),
-            Defaults.INTERNAL_SECURITY_KEY))
-      )));
+  private Language language = Tools.getDefaultLanguage(
+    Integer.parseInt(
+      Objects.requireNonNull(
+        AES.decrypt(
+          Tools.getResourceValue("structure", "default.language"),
+          Defaults.INTERNAL_SECURITY_KEY))));
+  private ResourceAsStream resource = new ResourceAsStream(language.getLocale());
 
   @Resource
   private WebServiceContext serviceContext;
@@ -63,7 +62,7 @@ public class GeneralImpl implements SGeneral, RGeneral {
         .toString()));
 
     if (Objects.equals(AES.decrypt(Tools.getResourceValue("structure", "default.language"),
-      Defaults.INTERNAL_SECURITY_KEY), String.valueOf(Language.Farsi.getCode()))) {
+      Defaults.INTERNAL_SECURITY_KEY), String.valueOf(com.github.capitansissy.enumeration.Language.Farsi.getCode()))) {
       return new PersianCalendar().toPersian().getLongDateString();
     } else {
       return new PersianCalendar().toHijri().getLongDateString();
@@ -84,7 +83,7 @@ public class GeneralImpl implements SGeneral, RGeneral {
   public String GetVersion() {
     try {
       if (Objects.equals(AES.decrypt(Tools.getResourceValue("structure", "default.language"),
-        Defaults.INTERNAL_SECURITY_KEY), String.valueOf(Language.Farsi.getCode()))) {
+        Defaults.INTERNAL_SECURITY_KEY), String.valueOf(com.github.capitansissy.enumeration.Language.Farsi.getCode()))) {
         PrimeCalendar primeCalendar = new PersianCalendar();
         primeCalendar.setTime(new SimpleDateFormat("yyyy-MM-dd").parse(Tools.getResourceValue("structure", "release.candidate")));
         return String.format("%1$s-rc%2$s", Tools.getResourceValue("structure", "version.number"), Tools.toEN(primeCalendar.getShortDateString().replaceAll(Defaults.Slugs.Slash, Defaults.Slugs.Underscore)));
@@ -101,7 +100,7 @@ public class GeneralImpl implements SGeneral, RGeneral {
 
   @Override
   public String sayHello() {
-    return AES.decrypt(resource.get("hello.world"), Defaults.INTERNAL_SECURITY_KEY);
+    return String.format(Objects.requireNonNull(AES.decrypt(resource.get("welcome.message"), Defaults.INTERNAL_SECURITY_KEY)), language.getDir(), language.getLang(), AES.decrypt(resource.get("hello.world"), Defaults.INTERNAL_SECURITY_KEY));
   }
 
 }

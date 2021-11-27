@@ -8,7 +8,7 @@
   <artifactId>encapsulation</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
-  <name>- Encapsulation Module</name>
+  <name>1- Encapsulation Module</name>
   <url>https://capitansissy.github.io/HelloWorld/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

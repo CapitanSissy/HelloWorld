@@ -13,5 +13,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="module" module-name="Constants" />
+    <orderEntry type="module" module-name="Encapsulation" />
   </component>
 </module>

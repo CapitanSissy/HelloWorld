@@ -9,9 +9,10 @@ public class Defaults implements Serializable {
 
   public static final String DEVICE_ID = "d80008c4";
   public static final String CHARSET = "UTF-8";
+  public static final String MESSAGE_CONTEXT_KEY = "com.sun.xml.internal.ws.http.exchange";
+
   static final String OS_NAME = System.getProperty("os.name");
   static final String REGULAR_EXPRESSION_FOR_IP_ADDRESS = "\\d{1,3}(?:\\.\\d{1,3}){3}(?::\\d{1,5})?";
-  public static final String MESSAGE_CONTEXT_KEY = "com.sun.xml.internal.ws.http.exchange";
 
   static class Text {
     static final String REGULAR_EXPRESSION_FOR_UNREFINED_TEXT = "[^a-zA-Z0-9\\u0020\\u200C\\u005F\\p{InArabic}&&\\PN]";

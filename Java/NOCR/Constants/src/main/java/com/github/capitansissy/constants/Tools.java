@@ -1,5 +1,6 @@
 package com.github.capitansissy.constants;
 
+import com.github.capitansissy.encapsulation.Language;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
@@ -93,14 +94,14 @@ public class Tools implements Serializable {
     return unrefinedText.trim().replaceAll(Defaults.Text.REGULAR_EXPRESSION_FOR_UNREFINED_TEXT, Defaults.Slugs.None);
   }
 
-  public static Locale getDefaultLanguage(int languageCode) {
+  public static Language getDefaultLanguage(int languageCode) {
     switch (languageCode) {
       case 0:
-        return new Locale("fa", "IR");
+        return new Language(new Locale("fa", "IR"), "rtl", "fa");
       case 1:
-        return new Locale("ar", "AE");
+        return new Language(new Locale("ar", "AE"), "rtl", "ar");
       default:
-        return new Locale("en", "US");
+        return new Language(new Locale("en", "US"), "ltr", "en");
     }
   }
 

@@ -15,5 +15,6 @@
     <orderEntry type="module" module-name="Security" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
     <orderEntry type="module" module-name="Constants" />
+    <orderEntry type="module" module-name="Encapsulation" />
   </component>
 </module>

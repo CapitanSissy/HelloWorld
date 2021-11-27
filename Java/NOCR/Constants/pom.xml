@@ -8,7 +8,7 @@
   <artifactId>constants</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
-  <name>- Constants Module</name>
+  <name>2- Constants Module</name>
   <url>https://capitansissy.github.io/HelloWorld/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,6 +22,11 @@
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
       <version>13.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.capitansissy</groupId>
+      <artifactId>encapsulation</artifactId>
+      <version>1.0</version>
     </dependency>
   </dependencies>
   <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->
