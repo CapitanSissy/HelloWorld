@@ -27,6 +27,7 @@
           <include>**/log4j.properties</include>
           <include>**/messages*.properties</include>
           <include>**/structure.properties</include>
+          <include>**/handler-chain.xml</include>
         </includes>
         <excludes>
           <exclude>plain-text/**</exclude>
@@ -238,6 +239,7 @@
                     <exclude>**/log4j.properties</exclude>
                     <exclude>**/messages*.properties</exclude>
                     <exclude>**/structure.properties</exclude>
+                    <exclude>**/handler-chain.xml</exclude>
                     <exclude>plain-text/**</exclude>
                     <exclude>jks/**</exclude>
                     <exclude>META-INF/**</exclude>
@@ -419,6 +421,12 @@
       <artifactId>tools</artifactId>
       <version>1.8</version>
     </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
 
     <!--[ RESTful dependencies ]-->
     <dependency>
@@ -512,6 +520,8 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+
+
   </dependencies>
   <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->
 </project>

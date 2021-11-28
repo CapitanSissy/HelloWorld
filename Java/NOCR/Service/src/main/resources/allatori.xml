@@ -76,6 +76,7 @@
     <class template="class org.glassfish.*"/>
     <class template="class org.osgi.framework.*"/>
     <class template="class java.util.concurrent.*"/>
+    <class template="class javax.servlet.*"/>
 
     <class template="class com.apache.*"/>
     <class template="class org.apache.http.entity.StringEntity"/>

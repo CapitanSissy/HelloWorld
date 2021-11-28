@@ -10,6 +10,7 @@ import com.github.capitansissy.constants.webservice.soap.Actions;
 import com.github.capitansissy.constants.webservice.soap.Implementations;
 import com.github.capitansissy.constants.webservice.soap.Operations;
 import com.github.capitansissy.encapsulation.Language;
+import com.github.capitansissy.encapsulation.Request;
 import com.github.capitansissy.messages.ResourceAsStream;
 import com.github.capitansissy.security.AES;
 import com.github.capitansissy.service.interfaces.restful.RGeneral;
@@ -17,6 +18,7 @@ import com.github.capitansissy.service.interfaces.soap.SGeneral;
 import com.sun.net.httpserver.HttpExchange;
 
 import javax.annotation.Resource;
+import javax.jws.HandlerChain;
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
 import javax.jws.WebService;
@@ -25,14 +27,16 @@ import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @WebService(name = Implementations.GENERAL_WEBSERVICE_NAME,
   targetNamespace = Defaults.TARGET_NAME_SPACE,
   serviceName = Implementations.GENERAL_SERVICE_NAME,
   portName = Implementations.GENERAL_PORT_NAME)
+@HandlerChain(file = "handler-chain.xml")
 
 public class GeneralImpl implements SGeneral, RGeneral {
   private Logger logger = new Logger();
@@ -43,6 +47,7 @@ public class GeneralImpl implements SGeneral, RGeneral {
           Tools.getResourceValue("structure", "default.language"),
           Defaults.INTERNAL_SECURITY_KEY))));
   private ResourceAsStream resource = new ResourceAsStream(language.getLocale());
+  private List<Request> requestList = new ArrayList<>();
 
   @Resource
   private WebServiceContext serviceContext;
@@ -55,17 +60,28 @@ public class GeneralImpl implements SGeneral, RGeneral {
   @XmlElement(name = Operations.GLOBAL_GET_DATE, namespace = Defaults.TARGET_NAME_SPACE)
   public String GetDate() {
     MessageContext messageContext = serviceContext.getMessageContext();
-    System.out.println(Tools.getIPAddress(
-      ((HttpExchange) messageContext.get(Defaults.MESSAGE_CONTEXT_KEY))
-        .getRemoteAddress()
-        .getAddress()
-        .toString()));
-
-    if (Objects.equals(AES.decrypt(Tools.getResourceValue("structure", "default.language"),
-      Defaults.INTERNAL_SECURITY_KEY), String.valueOf(com.github.capitansissy.enumeration.Language.Farsi.getCode()))) {
-      return new PersianCalendar().toPersian().getLongDateString();
+    Optional<Request> request = requestList.stream().filter(req -> req.getIp().equals(Tools.getIPAddress(((HttpExchange) messageContext.get(Defaults.MESSAGE_CONTEXT_KEY)).getRemoteAddress().getAddress().toString()))).findFirst();
+    if (request.isPresent()) {
+      if (request.get().getTimestamp().before(new Timestamp(System.currentTimeMillis()))) {
+        request.get().setTimestamp(new Timestamp(new Date(System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(1)).getTime()));
+        if (Objects.equals(AES.decrypt(Tools.getResourceValue("structure", "default.language"),
+          Defaults.INTERNAL_SECURITY_KEY), String.valueOf(com.github.capitansissy.enumeration.Language.Farsi.getCode()))) {
+          return new PersianCalendar().toPersian().getLongDateString();
+        } else {
+          return new PersianCalendar().toHijri().getLongDateString();
+        }
+      } else {
+        return AES.decrypt(resource.get("a.little.calmer"), Defaults.INTERNAL_SECURITY_KEY);
+      }
     } else {
-      return new PersianCalendar().toHijri().getLongDateString();
+      requestList.add(new Request(Tools.getIPAddress(((HttpExchange) messageContext.get(Defaults.MESSAGE_CONTEXT_KEY)).getRemoteAddress().getAddress().toString()),
+        new Timestamp(new Date(System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(1)).getTime())));
+      if (Objects.equals(AES.decrypt(Tools.getResourceValue("structure", "default.language"),
+        Defaults.INTERNAL_SECURITY_KEY), String.valueOf(com.github.capitansissy.enumeration.Language.Farsi.getCode()))) {
+        return new PersianCalendar().toPersian().getLongDateString();
+      } else {
+        return new PersianCalendar().toHijri().getLongDateString();
+      }
     }
   }
 
