@@ -1,0 +1,63 @@
+plugins {
+  id 'com.android.application'
+}
+
+android {
+  compileSdk 31
+
+  defaultConfig {
+    applicationId "com.github.capitansissy.helloworld"
+    minSdk 21
+    targetSdk 31
+    versionCode 1
+    versionName "1.0"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  applicationVariants.all { variant ->
+    variant.javaCompileProvider.get().doLast {
+      runAllatori(variant)
+    }
+  }
+
+}
+
+def runAllatori(variant) {
+  copy {
+    from "$projectDir/allatori.xml"
+    into "$buildDir/intermediates/classes/"
+    expand(classesRoot: variant.javaCompileProvider.get().destinationDir,
+      kotlinRoot: "${buildDir}/tmp/kotlin-classes/${variant.name}",
+      androidJar: "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar",
+      classpathJars: variant.javaCompileProvider.get().classpath.getAsPath(),
+      logFile: "allatori-log-${variant.name}.xml")
+    rename('allatori.xml', "allatori-${variant.name}.xml")
+  }
+
+  new File("${variant.javaCompileProvider.get().destinationDir}-obfuscated").deleteDir()
+  javaexec {
+    main = 'com.allatori.Obfuscate'
+    classpath = files("$rootDir/allatori/allatori.jar")
+    args "$buildDir/intermediates/classes/allatori-${variant.name}.xml"
+  }
+  new File("${variant.javaCompileProvider.get().destinationDir}").deleteDir()
+  new File("${variant.javaCompileProvider.get().destinationDir}-obfuscated").renameTo(new File("${variant.javaCompileProvider.get().destinationDir}"))
+
+}
+
+dependencies {
+  implementation 'androidx.appcompat:appcompat:1.4.0'
+  implementation 'com.google.android.material:material:1.4.0'
+  implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+
+}
