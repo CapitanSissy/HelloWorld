@@ -34,7 +34,6 @@
   <property name="classes-naming" value="123"/>
   <property name="methods-naming" value="abc"/>
   <property name="fields-naming" value="123"/>
-  <property name="update-resource-contents" value="enable:UTF-8"/>
   <property name="line-numbers" value="obfuscate"/>
   <property name="finalize" value="enable"/>
 
@@ -76,7 +75,6 @@
     <class template="class org.glassfish.*"/>
     <class template="class org.osgi.framework.*"/>
     <class template="class java.util.concurrent.*"/>
-    <class template="class javax.servlet.*"/>
 
     <class template="class com.apache.*"/>
     <class template="class org.apache.http.entity.StringEntity"/>

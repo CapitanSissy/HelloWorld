@@ -3,3 +3,37 @@
 * d2j-dex2jar.sh -f -o output_jar.jar apk_to_decompile.apk
   d2j-dex2jar.sh -f -o output_jar.jar dex_to_decompile.dex
 
+* Download OpenSSL > https://slproweb.com/download/Win64OpenSSL-3_0_0.exe
+* OpenSSL URL      > https://slproweb.com/products/Win32OpenSSL.html
+
+
+/*=-=-=-=-=-[ Linux ]-=-=-=-=-=*/
+1. genrsa -out /home/daniel/tmp/privkey.pem 4096
+2. ssh-keygen -t rsa -b 4096 -f /home/daniel/tmp/privkey.pem
+3. req -new -x509 -key /home/daniel/tmp/privkey.pem -out /home/daniel/tmp/cacert.pem -days 1095
+
+/*=-=-=-=-=-[ PowerShell ]-=-=-=-=-=*/
+1. $notAfter = [datetime]::Today.AddYears(2)
+2. $thumb = (New-SelfSignedCertificate -CertStoreLocation cert:\localmachine\my -DnsName localhost -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" -NotAfter $notAfter).Thumbprint
+3. $pwd = 'C4pit4nS!ssy_H3ll0W0rld'
+4. $SSpwd = ConvertTo-SecureString -String $pwd -Force -AsPlainText
+5. Export-PfxCertificate -cert "cert:\localmachine\my\$thumb" -FilePath "C:\DevCert.pfx" -Password $SSpwd
+
+/*=-=-=-=-=-[ Self-Signed JKS ]-=-=-=-=-=*/
+1. keytool -genkey -keystore server-helloworld-keystore.jks -alias server-helloworld -keyalg RSA -keysize 2048 -validity 3650 -keypass server-helloworld_c4p!t4n -storepass server-helloworld_c4p!t4n -dname "CN=localhost, O=capitansissy.github.io"
+2. keytool -export -alias server-helloworld -storepass server-helloworld_c4p!t4n -keystore server-helloworld-keystore.jks -file server.cert
+3. keytool -import -alias serverCert -file server.cert -storepass server-helloworld_c4p!t4n -keystore client-helloworld-truststore
+
+1. keytool -genkey -keystore client-helloworld-keystore.jks -alias client-helloworld -keyalg RSA -keysize 2048 -validity 3650 -keypass client-helloworld_c0p!t0n -storepass client-helloworld_c0p!t0n -dname "CN=localhost, O=capitansissy.github.io"
+2. keytool -export -alias client-helloworld -storepass client-helloworld_c0p!t0n -keystore client-helloworld-keystore.jks -file client.cert
+3. keytool -import -alias clientCert -file client.cert -storepass client-helloworld_c0p!t0n -keystore server-helloworld-truststore
+
+/*=-=-=-=-=-[ How to Install Self-Signed JKS (changeit) ]-=-=-=-=-=*/
+Check Status
+  1. "%JAVA_BASE%\bin\keytool" -list -keystore "%JAVA_BASE%\jre\lib\security\cacerts"
+
+Install Certificate
+  1. "%JAVA_BASE%\bin\keytool" -import -alias HelloWorld -keystore "%JAVA_BASE%\jre\lib\security\cacerts" -file "%PUBLIC_KEY_PATH%\jks\server.cert"
+
+Delete Certificate
+  1. "%JAVA_BASE%\bin\keytool" -delete -alias HelloWorld -keystore "%JAVA_BASE%\jre\lib\security\cacerts"

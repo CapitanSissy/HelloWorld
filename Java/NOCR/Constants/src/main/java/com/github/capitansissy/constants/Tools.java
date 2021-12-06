@@ -4,6 +4,7 @@ import com.github.capitansissy.encapsulation.Language;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.lang.management.ManagementFactory;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -14,6 +15,17 @@ import static com.github.capitansissy.constants.OSType.*;
 
 
 public class Tools implements Serializable {
+  private final static Pattern debugPattern = Pattern.compile("-Xdebug|jdwp");
+
+  public static boolean isDebugging() {
+    for (String arg : ManagementFactory.getRuntimeMXBean().getInputArguments()) {
+      if (debugPattern.matcher(arg).find()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public static OSType getOsType() {
     String osNameLower = OS_NAME.toLowerCase();
     if (osNameLower.startsWith("win")) {

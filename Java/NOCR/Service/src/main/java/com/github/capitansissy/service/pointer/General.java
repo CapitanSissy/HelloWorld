@@ -24,7 +24,7 @@ public class General {
   @Path(Paths.INPUT_PATH)
   @GET
   @Produces({Defaults.MediaType.TEXT_HTML})
-  public String GetInput(@PathParam(PathParams.A) String name) {
+  public String GetInput(@PathParam(PathParams.NAME) String name) {
     return general.GetInput(name);
   }
 

@@ -28,11 +28,14 @@
           <include>**/messages*.properties</include>
           <include>**/structure.properties</include>
           <include>**/handler-chain.xml</include>
+          <include>jks/**</include>
+          <include>META-INF/**</include>
         </includes>
         <excludes>
           <exclude>plain-text/**</exclude>
           <exclude>allatori.xml</exclude>
         </excludes>
+        <filtering>false</filtering>
       </resource>
     </resources>
     <plugins>
@@ -199,15 +202,15 @@
               <goal>run</goal>
             </goals>
             <configuration>
-<!--              <target name="-obfuscate" unless="do.not.compile">-->
-<!--                <taskdef name="allatori" classname="com.allatori.ant.ObfuscatorTask"-->
-<!--                         classpath="${basedir}/allatori/lib/allatori.jar"/>-->
-<!--                <allatori config="allatori.xml"/>-->
-<!--                <property name="crude.fileName"-->
-<!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar"/>-->
-<!--                <property name="obfuscated.fileName"-->
-<!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"/>-->
-<!--              </target>-->
+              <!--              <target name="-obfuscate" unless="do.not.compile">-->
+              <!--                <taskdef name="allatori" classname="com.allatori.ant.ObfuscatorTask"-->
+              <!--                         classpath="${basedir}/allatori/lib/allatori.jar"/>-->
+              <!--                <allatori config="allatori.xml"/>-->
+              <!--                <property name="crude.fileName"-->
+              <!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar"/>-->
+              <!--                <property name="obfuscated.fileName"-->
+              <!--                          value="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"/>-->
+              <!--              </target>-->
             </configuration>
           </execution>
           <!--   [##########]   -->
@@ -219,6 +222,10 @@
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
+          <nonFilteredFileExtensions>
+            <nonFilteredFileExtension>keystore</nonFilteredFileExtension>
+            <nonFilteredFileExtension>properties</nonFilteredFileExtension>
+          </nonFilteredFileExtensions>
           <encoding>UTF-8</encoding>
         </configuration>
         <executions>
@@ -234,6 +241,7 @@
               <resources>
                 <resource>
                   <directory>${project.basedir}/src/main/resources</directory>
+                  <filtering>false</filtering>
                   <excludes>
                     <exclude>**/db.properties</exclude>
                     <exclude>**/log4j.properties</exclude>
@@ -451,6 +459,12 @@
       <artifactId>jakarta.activation-api</artifactId>
       <version>2.0.1</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>29.0-jre</version>
+    </dependency>
+
     <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->
     <dependency>
       <groupId>org.jetbrains</groupId>
@@ -514,6 +528,7 @@
       <artifactId>messages</artifactId>
       <version>1.0</version>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

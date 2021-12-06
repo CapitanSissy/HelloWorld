@@ -1,5 +1,7 @@
 package com.github.capitansissy.constants;
 
+import com.github.capitansissy.security.AES;
+
 import java.io.Serializable;
 
 public class Defaults implements Serializable {
@@ -51,7 +53,7 @@ public class Defaults implements Serializable {
   }
 
   public static class URL {
-    public static final String PROTOCOL = "http";
+    public static final String PROTOCOL = "TLS";
     public static final String SLD = "localhost";
     public static final String TLD = "";
     public static final String DIRECTORY = "fa/v1";
@@ -64,6 +66,13 @@ public class Defaults implements Serializable {
       public static final String SOAP_GENERAL = "8081";
       public static final String RESTFUL_GENERAL = "8082";
     }
+  }
+
+  public static class SSL {
+    public static final String KEYSTORE_FILE_PATH = AES.decrypt(Tools.getResourceValue("structure", "keystore.file.path"), INTERNAL_SECURITY_KEY);
+    public static final String KEYSTORE_PASSWORD = AES.decrypt(Tools.getResourceValue("structure", "keystore.password"), INTERNAL_SECURITY_KEY);
+    public static final String TRUSTSTORE_FILE_PATH = AES.decrypt(Tools.getResourceValue("structure", "truststore.file.path"), INTERNAL_SECURITY_KEY);
+    public static final String TRUSTSTORE_PASSWORD = AES.decrypt(Tools.getResourceValue("structure", "truststore.password"), INTERNAL_SECURITY_KEY);
   }
 
 }
