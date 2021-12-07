@@ -8,7 +8,7 @@
   <artifactId>usb</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
-  <name>- USB Module</name>
+  <name>8- USB Module</name>
   <url>https://capitansissy.github.io/HelloWorld/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

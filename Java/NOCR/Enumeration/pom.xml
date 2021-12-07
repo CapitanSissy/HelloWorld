@@ -8,7 +8,7 @@
   <artifactId>enumeration</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
-  <name>- Enumeration Module</name>
+  <name>3- Enumeration Module</name>
   <url>https://capitansissy.github.io/HelloWorld/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

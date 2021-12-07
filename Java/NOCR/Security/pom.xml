@@ -8,7 +8,7 @@
   <artifactId>security</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
-  <name>- Security Module</name>
+  <name>4- Security Module</name>
   <url>https://capitansissy.github.io/HelloWorld/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

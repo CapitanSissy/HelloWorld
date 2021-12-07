@@ -19,5 +19,12 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.22" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.22" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
+    <orderEntry type="module" module-name="Messages" />
+    <orderEntry type="module" module-name="Constants" />
+    <orderEntry type="module" module-name="Encapsulation" />
+    <orderEntry type="module" module-name="Security" />
+    <orderEntry type="module" module-name="Enumeration" />
+    <orderEntry type="module" module-name="Logger" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
   </component>
 </module>

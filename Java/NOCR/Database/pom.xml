@@ -8,7 +8,7 @@
   <artifactId>database</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
-  <name>- Database Module</name>
+  <name>7- Database Module</name>
   <url>https://capitansissy.github.io/HelloWorld/</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,6 +42,26 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.9</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.capitansissy</groupId>
+      <artifactId>messages</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.capitansissy</groupId>
+      <artifactId>security</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.capitansissy</groupId>
+      <artifactId>enumeration</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.capitansissy</groupId>
+      <artifactId>logger</artifactId>
+      <version>1.0</version>
     </dependency>
   </dependencies>
   <!--[ ‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼‼ ]-->

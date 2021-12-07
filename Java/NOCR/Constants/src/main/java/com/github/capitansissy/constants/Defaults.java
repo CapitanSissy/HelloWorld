@@ -5,6 +5,7 @@ import com.github.capitansissy.security.AES;
 import java.io.Serializable;
 
 public class Defaults implements Serializable {
+  public static final String PUBLIC_DATABASE_KEY = "8L%TQtBI1$9V+CJu0#xQtL%n!Eg3p27dO@*v11lFGlE2stTJdRVwe8J3Iyn-MMohiP6-hpFPHnJX*u6oP8JoqlFRtCMno?yP&HsO6H#j_yN-xle&n$izy8Fp8r0vR%QNoT6J%1+d71&PfFYi9Tyj=Rcm_bH9S=8U2yWf4tSqdsuv$J$V1QHh8G7AHrS-jSemJ#bA&Nz@Tvyi!7#J$MINUTES_AGO_CHANGED#cJ7YvHgTLo&JE4VhpMKyFoBd*s4@cBh7F99YLOwv!AS-q";
   public static final String INTERNAL_SECURITY_KEY = "036^VX@RC";
 
   public static final String TARGET_NAME_SPACE = "https://helloworld.apachat.com";
@@ -15,6 +16,13 @@ public class Defaults implements Serializable {
 
   static final String OS_NAME = System.getProperty("os.name");
   static final String REGULAR_EXPRESSION_FOR_IP_ADDRESS = "\\d{1,3}(?:\\.\\d{1,3}){3}(?::\\d{1,5})?";
+
+  public static final String C3P0_DATASOURCE_JDBCURL = "jdbc:mysql://%1$s:%2$s/%3$s?useSSL=%4$s&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8";
+  public static final String DEFAULT_SCHEMA = AES.decrypt(Tools.getResourceValue("db", "project.database.default.schema"), INTERNAL_SECURITY_KEY);
+  public static final String DATA_SCHEMA = String.format("%1$s_data", DEFAULT_SCHEMA);
+  public static final String LOG_SCHEMA = String.format("%1$s_log", DEFAULT_SCHEMA);
+
+  public static final boolean DEBUG_MODE = Boolean.parseBoolean(AES.decrypt(Tools.getResourceValue("structure", "debug.mode"), INTERNAL_SECURITY_KEY));
 
   static class Text {
     static final String REGULAR_EXPRESSION_FOR_UNREFINED_TEXT = "[^a-zA-Z0-9\\u0020\\u200C\\u005F\\p{InArabic}&&\\PN]";
@@ -74,5 +82,10 @@ public class Defaults implements Serializable {
     public static final String TRUSTSTORE_FILE_PATH = AES.decrypt(Tools.getResourceValue("structure", "truststore.file.path"), INTERNAL_SECURITY_KEY);
     public static final String TRUSTSTORE_PASSWORD = AES.decrypt(Tools.getResourceValue("structure", "truststore.password"), INTERNAL_SECURITY_KEY);
   }
+
+  public static class Tables {
+    public static final String TBL_CONNECTION_PARAMETERS = "tbl_connection_parameters";
+  }
+
 
 }
