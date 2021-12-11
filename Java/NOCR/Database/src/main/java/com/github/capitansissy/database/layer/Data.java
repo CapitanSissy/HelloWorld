@@ -4,6 +4,7 @@ import com.github.capitansissy.constants.Defaults;
 import com.github.capitansissy.database.Inquiries;
 import com.github.capitansissy.database.abstracts.EntityBase;
 import com.github.capitansissy.encapsulation.ConnectionParameters;
+import com.github.capitansissy.enumeration.Boolean;
 import com.github.capitansissy.enumeration.Database;
 import com.github.capitansissy.security.AES;
 import org.jetbrains.annotations.NotNull;
@@ -56,7 +57,7 @@ class Data extends EntityBase implements Serializable {
       connectionParameters.setServerName(AES.decrypt(resultSet.getString(1), Defaults.PUBLIC_DATABASE_KEY));
       connectionParameters.setPortNumber(AES.decrypt(resultSet.getString(2), Defaults.PUBLIC_DATABASE_KEY));
       connectionParameters.setDatabaseName(AES.decrypt(resultSet.getString(3), Defaults.PUBLIC_DATABASE_KEY));
-      connectionParameters.setUseSSL(AES.decrypt(resultSet.getString(4), Defaults.PUBLIC_DATABASE_KEY));
+      connectionParameters.setUseSSL(Boolean.toString(AES.decrypt(resultSet.getString(4), Defaults.PUBLIC_DATABASE_KEY)));
       connectionParameters.setUsername(AES.decrypt(resultSet.getString(5), Defaults.PUBLIC_DATABASE_KEY));
       connectionParameters.setPassword(AES.decrypt(resultSet.getString(6), Defaults.PUBLIC_DATABASE_KEY));
     }

@@ -42,6 +42,8 @@ public class Defaults implements Serializable {
     public static final String Slash = "/";
     public static final String Underscore = "_";
     public static final String Space = " ";
+    public static final String CRLF = "\r\n";
+    public static final String Ellipsis = "…";
   }
 
   public static class Log4J {

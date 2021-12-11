@@ -5,6 +5,8 @@ import com.github.capitansissy.constants.Defaults;
 import com.github.capitansissy.constants.Tools;
 import com.github.capitansissy.constants.webservice.restful.Paths;
 import com.github.capitansissy.constants.webservice.soap.Interfaces;
+import com.github.capitansissy.database.layer.Business;
+import com.github.capitansissy.enumeration.Database;
 import com.github.capitansissy.service.implementation.GeneralImpl;
 import com.github.capitansissy.service.interfaces.restful.RGeneral;
 import com.github.capitansissy.service.pointer.General;
@@ -115,6 +117,16 @@ public class Launcher implements Serializable {
     try {
       logger.setLog(String.format("Hello %s", companyName()), Defaults.Log4J.DEBUG);
       System.setProperty("javax.xml.bind.JAXBContext", "com.sun.xml.internal.bind.v2.ContextFactory");
+
+      // At startup we check the database and then create connection pool.
+      try {
+        new Business().InitializeDatabaseAsPrimitive();
+        new Business().InitializeDatabaseAsSecondary(Database.Data.getCode());
+        new Business().InitializeDatabaseAsSecondary(Database.Log.getCode());
+      } catch (Exception e) {
+        logger.setLog(e.getMessage(), Defaults.Log4J.DEBUG);
+        System.exit(1);
+      }
 
       /*=-=-=-=-=-[ Initialize SSL ]-=-=-=-=-=*/
       SSLContext sslContext = SSLContext.getInstance(Defaults.URL.PROTOCOL);

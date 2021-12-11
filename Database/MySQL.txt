@@ -1,0 +1,28 @@
+1. whoami > SELECT CURRENT_USER();
+2. mysql -u root -p
+   <YOUR_PASSWORD>
+
+3. CREATE DATABASE `helloworld` CHARACTER SET `utf8` COLLATE `utf8_general_ci`;
+   CREATE DATABASE `helloworld_data` CHARACTER SET `utf8` COLLATE `utf8_general_ci`;
+   CREATE DATABASE `helloworld_log` CHARACTER SET `utf8` COLLATE `utf8_general_ci`;
+
+4. CREATE USER `helloworld`@`localhost` IDENTIFIED BY 'qazQAZ@123';
+   CREATE USER `helloworld_data`@`localhost` IDENTIFIED BY 'qazQAZ@456';
+   CREATE USER `helloworld_log`@`localhost` IDENTIFIED BY 'qazQAZ@789';
+
+5. GRANT ALL PRIVILEGES ON `helloworld`.* TO `helloworld`@`localhost` IDENTIFIED BY 'qazQAZ@123';
+   FLUSH PRIVILEGES;
+   GRANT ALL PRIVILEGES ON `helloworld_data`.* TO `helloworld_data`@`localhost` IDENTIFIED BY 'qazQAZ@456';
+   FLUSH PRIVILEGES;
+   GRANT ALL PRIVILEGES ON `helloworld_log`.* TO `helloworld_log`@`localhost` IDENTIFIED BY 'qazQAZ@789';
+   FLUSH PRIVILEGES;
+
+6. USE helloworld;
+   USE helloworld_data;
+   USE helloworld_log;
+
+7. mysql -u helloworld -p --database=helloworld < /home/capitansissy/tmp/helloworld_database_v1.sql
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-
+1. drop user `helloworld`@`localhost`;
+2. drop database helloworld;
