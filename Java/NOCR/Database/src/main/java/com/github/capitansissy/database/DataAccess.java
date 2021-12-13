@@ -4,7 +4,7 @@ import com.github.capitansissy.Logger;
 import com.github.capitansissy.constants.Defaults;
 import com.github.capitansissy.constants.Tools;
 import com.github.capitansissy.database.layer.Business;
-import com.github.capitansissy.encapsulation.ConnectionParameters;
+import com.github.capitansissy.encapsulation.Parameters;
 import com.github.capitansissy.enumeration.Database;
 import com.github.capitansissy.messages.ResourceAsStream;
 import com.github.capitansissy.security.AES;
@@ -52,28 +52,28 @@ public class DataAccess implements Serializable {
   }
 
   @NotNull
-  private static ComboPooledDataSource AsData(@NotNull ConnectionParameters connectionParameters) throws PropertyVetoException {
+  private static ComboPooledDataSource AsData(@NotNull Parameters parameters) throws PropertyVetoException {
     dataComboPooled = new ComboPooledDataSource();
     dataComboPooled.setJdbcUrl(String.format(Defaults.C3P0_DATASOURCE_JDBCURL,
-      connectionParameters.getServerName(),
-      connectionParameters.getPortNumber(),
-      connectionParameters.getDatabaseName(),
-      connectionParameters.getUseSSL()));
-    dataComboPooled.setUser(connectionParameters.getUsername());
-    dataComboPooled.setPassword(connectionParameters.getPassword());
+      parameters.getServerName(),
+      parameters.getPortNumber(),
+      parameters.getDatabaseName(),
+      parameters.getUseSSL()));
+    dataComboPooled.setUser(parameters.getUsername());
+    dataComboPooled.setPassword(parameters.getPassword());
     return getBaseDataSourceConfiguration(dataComboPooled);
   }
 
   @NotNull
-  private static ComboPooledDataSource AsLog(@NotNull ConnectionParameters connectionParameters) throws PropertyVetoException {
+  private static ComboPooledDataSource AsLog(@NotNull Parameters parameters) throws PropertyVetoException {
     logComboPooled = new ComboPooledDataSource();
     logComboPooled.setJdbcUrl(String.format(Defaults.C3P0_DATASOURCE_JDBCURL,
-      connectionParameters.getServerName(),
-      connectionParameters.getPortNumber(),
-      connectionParameters.getDatabaseName(),
-      connectionParameters.getUseSSL()));
-    logComboPooled.setUser(connectionParameters.getUsername());
-    logComboPooled.setPassword(connectionParameters.getPassword());
+      parameters.getServerName(),
+      parameters.getPortNumber(),
+      parameters.getDatabaseName(),
+      parameters.getUseSSL()));
+    logComboPooled.setUser(parameters.getUsername());
+    logComboPooled.setPassword(parameters.getPassword());
     return getBaseDataSourceConfiguration(logComboPooled);
   }
 
@@ -92,7 +92,7 @@ public class DataAccess implements Serializable {
       case 1:
         try {
           if (dataComboPooled == null) {
-            ConnectionParameters parameters = new Business().GetTableInfoAsData();
+            Parameters parameters = new Business().GetTableInfoAsData();
             dataComboPooled = AsData(parameters);
           }
           connection = dataComboPooled.getConnection();
@@ -109,7 +109,7 @@ public class DataAccess implements Serializable {
       case 2:
         try {
           if (logComboPooled == null) {
-            ConnectionParameters parameters = new Business().GetTableInfoAsLog();
+            Parameters parameters = new Business().GetTableInfoAsLog();
             logComboPooled = AsLog(parameters);
           }
           connection = logComboPooled.getConnection();

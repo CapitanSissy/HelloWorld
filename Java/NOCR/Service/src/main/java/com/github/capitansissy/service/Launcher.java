@@ -30,8 +30,6 @@ import javax.xml.ws.Endpoint;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.security.KeyStore;
@@ -220,9 +218,7 @@ public class Launcher implements Serializable {
       }
 
       if (IS_ATTACHED) {
-        RuntimeMXBean runtimeMxBean = ManagementFactory.getRuntimeMXBean();
-        List<String> arguments = runtimeMxBean.getInputArguments();
-        if (arguments.contains("-Dfile.encoding=UTF-8")) {
+        if (Tools.isUTF8()) {
           run();
         } else {
           logger.setLog("This is a multilingual program. Use \"-Dfile.encoding=UTF-8\" to display messages correctly.", Defaults.Log4J.DEBUG);

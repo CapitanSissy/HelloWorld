@@ -3,7 +3,7 @@ package com.github.capitansissy.database.layer;
 import com.github.capitansissy.Logger;
 import com.github.capitansissy.constants.Defaults;
 import com.github.capitansissy.database.DataAccess;
-import com.github.capitansissy.encapsulation.ConnectionParameters;
+import com.github.capitansissy.encapsulation.Parameters;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -39,7 +39,7 @@ public class Business implements Serializable {
     }
   }
 
-  public ConnectionParameters GetTableInfoAsData() throws Exception {
+  public Parameters GetTableInfoAsData() throws Exception {
     try (Connection connection = DataAccess.getConnection()) {
       try {
         return new Data(connection).GetTableInfoAsData();
@@ -51,7 +51,7 @@ public class Business implements Serializable {
     }
   }
 
-  public ConnectionParameters GetTableInfoAsLog() throws Exception {
+  public Parameters GetTableInfoAsLog() throws Exception {
     try (Connection connection = DataAccess.getConnection()) {
       try {
         return new Data(connection).GetTableInfoAsLog();

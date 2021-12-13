@@ -9,10 +9,10 @@
          out="helloworld_v1.0.5-rc2021-10-30-jar-with-dependencies_obfuscated.jar"/>
   </input>
 
-<!--  <input>-->
-<!--    <jar in="${crude.fileName}"-->
-<!--         out="${obfuscated.fileName}"/>-->
-<!--  </input>-->
+  <!--  <input>-->
+  <!--    <jar in="${crude.fileName}"-->
+  <!--         out="${obfuscated.fileName}"/>-->
+  <!--  </input>-->
 
   <keep-names>
     <class template="class com.github.capitansissy.service.pointer.*" stop="true"/>
@@ -75,6 +75,8 @@
     <class template="class org.glassfish.*"/>
     <class template="class org.osgi.framework.*"/>
     <class template="class java.util.concurrent.*"/>
+    <class template="class org.jboss.resource.*"/>
+    <class template="class org.apache.logging.log4j"/>
 
     <class template="class com.apache.*"/>
     <class template="class org.apache.http.entity.StringEntity"/>

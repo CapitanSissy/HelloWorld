@@ -175,6 +175,7 @@
                 <move
                   file="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"
                   tofile="${project.build.directory}/release/${project.build.finalName}.jar"/>
+                <delete file="${project.build.directory}/${project.build.finalName}-jar-with-dependencies_obfuscated.jar"/>
               </target>
             </configuration>
           </execution>

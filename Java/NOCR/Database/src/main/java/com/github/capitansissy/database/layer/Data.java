@@ -3,9 +3,10 @@ package com.github.capitansissy.database.layer;
 import com.github.capitansissy.constants.Defaults;
 import com.github.capitansissy.database.Inquiries;
 import com.github.capitansissy.database.abstracts.EntityBase;
-import com.github.capitansissy.encapsulation.ConnectionParameters;
+import com.github.capitansissy.encapsulation.Parameters;
 import com.github.capitansissy.enumeration.Boolean;
 import com.github.capitansissy.enumeration.Database;
+import com.github.capitansissy.enumeration.Tables;
 import com.github.capitansissy.security.AES;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,31 +40,43 @@ class Data extends EntityBase implements Serializable {
     preparedStatement.close();
   }
 
-  ConnectionParameters GetTableInfoAsData() throws SQLException {
+  Parameters GetTableInfoAsData() throws SQLException {
     return GetBaseTableInfo(Database.Data);
   }
 
-  ConnectionParameters GetTableInfoAsLog() throws SQLException {
+  Parameters GetTableInfoAsLog() throws SQLException {
     return GetBaseTableInfo(Database.Log);
   }
 
   @NotNull
-  private ConnectionParameters GetBaseTableInfo(@NotNull Database database) throws SQLException {
-    ConnectionParameters connectionParameters = new ConnectionParameters();
-    PreparedStatement preparedStatement = makeConnection().prepareStatement(String.format(Inquiries.GET_TABLE_LIST, Defaults.DEFAULT_SCHEMA, Defaults.Tables.TBL_CONNECTION_PARAMETERS));
+  private Parameters GetBaseTableInfo(@NotNull Database database) throws SQLException {
+    Parameters parameters = new Parameters();
+    // PreparedStatement preparedStatement = makeConnection().prepareStatement(String.format(Inquiries.GET_TABLE_LIST, Defaults.DEFAULT_SCHEMA, Defaults.Tables.TBL_CONNECTION_PARAMETERS));
+    PreparedStatement preparedStatement = makeConnection().prepareStatement(String.format(
+      Inquiries.GET_TABLE_LIST_OBFUSCATED,
+      Tables.TBL_CONNECTION_PARAMETERS.getSchema(),
+      Tables.TBL_CONNECTION_PARAMETERS.getTable(),
+      Tables.TBL_CONNECTION_PARAMETERS.getColumns()[1],
+      Tables.TBL_CONNECTION_PARAMETERS.getColumns()[2],
+      Tables.TBL_CONNECTION_PARAMETERS.getColumns()[3],
+      Tables.TBL_CONNECTION_PARAMETERS.getColumns()[4],
+      Tables.TBL_CONNECTION_PARAMETERS.getColumns()[5],
+      Tables.TBL_CONNECTION_PARAMETERS.getColumns()[6],
+      Tables.TBL_CONNECTION_PARAMETERS.getColumns()[0])
+    );
     preparedStatement.setInt(1, database.getCode());
     ResultSet resultSet = preparedStatement.executeQuery();
     while (resultSet.next()) {
-      connectionParameters.setServerName(AES.decrypt(resultSet.getString(1), Defaults.PUBLIC_DATABASE_KEY));
-      connectionParameters.setPortNumber(AES.decrypt(resultSet.getString(2), Defaults.PUBLIC_DATABASE_KEY));
-      connectionParameters.setDatabaseName(AES.decrypt(resultSet.getString(3), Defaults.PUBLIC_DATABASE_KEY));
-      connectionParameters.setUseSSL(Boolean.toString(AES.decrypt(resultSet.getString(4), Defaults.PUBLIC_DATABASE_KEY)));
-      connectionParameters.setUsername(AES.decrypt(resultSet.getString(5), Defaults.PUBLIC_DATABASE_KEY));
-      connectionParameters.setPassword(AES.decrypt(resultSet.getString(6), Defaults.PUBLIC_DATABASE_KEY));
+      parameters.setServerName(AES.decrypt(resultSet.getString(1), Defaults.PUBLIC_DATABASE_KEY));
+      parameters.setPortNumber(AES.decrypt(resultSet.getString(2), Defaults.PUBLIC_DATABASE_KEY));
+      parameters.setDatabaseName(AES.decrypt(resultSet.getString(3), Defaults.PUBLIC_DATABASE_KEY));
+      parameters.setUseSSL(Boolean.toString(AES.decrypt(resultSet.getString(4), Defaults.PUBLIC_DATABASE_KEY)));
+      parameters.setUsername(AES.decrypt(resultSet.getString(5), Defaults.PUBLIC_DATABASE_KEY));
+      parameters.setPassword(AES.decrypt(resultSet.getString(6), Defaults.PUBLIC_DATABASE_KEY));
     }
     resultSet.close();
     preparedStatement.close();
-    return connectionParameters;
+    return parameters;
   }
 
 }

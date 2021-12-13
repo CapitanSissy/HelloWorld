@@ -85,9 +85,4 @@ public class Defaults implements Serializable {
     public static final String TRUSTSTORE_PASSWORD = AES.decrypt(Tools.getResourceValue("structure", "truststore.password"), INTERNAL_SECURITY_KEY);
   }
 
-  public static class Tables {
-    public static final String TBL_CONNECTION_PARAMETERS = "tbl_connection_parameters";
-  }
-
-
 }

@@ -16,10 +16,19 @@ import static com.github.capitansissy.constants.OSType.*;
 
 public class Tools implements Serializable {
   private final static Pattern debugPattern = Pattern.compile("-Xdebug|jdwp");
+  private final static Pattern fileEncoding = Pattern.compile("-Dfile\\.encoding=UTF-8");
 
   public static boolean isDebugging() {
+    return isExists(debugPattern);
+  }
+
+  public static boolean isUTF8() {
+    return isExists(fileEncoding);
+  }
+
+  private static boolean isExists(Pattern pattern) {
     for (String arg : ManagementFactory.getRuntimeMXBean().getInputArguments()) {
-      if (debugPattern.matcher(arg).find()) {
+      if (pattern.matcher(arg).find()) {
         return true;
       }
     }
