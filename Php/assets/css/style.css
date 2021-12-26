@@ -1,0 +1,416 @@
+﻿@import url(iransans-serif.css);
+
+body {
+  font-family: IRANSans, sans-serif !important;
+  font-weight: 300;
+  direction: rtl;
+  background-color: #E2E2E2;
+  margin: 15px;
+}
+
+h1, h2, h3, h4, h5, h6, input, textarea {
+  font-family: IRANSans, sans-serif !important;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+form {
+  margin: 25px;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-small {
+  font-size: 0.8em;
+}
+
+.text-xsmall {
+  font-size: 0.6em;
+}
+
+.text-large {
+  font-size: 1.2em;
+}
+
+.text-xlarge {
+  font-size: 1.4em;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-ultralight {
+  font-weight: 200;
+}
+
+.text-light {
+  font-weight: 300;
+}
+
+.text-regular {
+  font-weight: normal;
+}
+
+.text-medium {
+  font-weight: 500;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.add {
+  width: 35px !important;
+  height: 28px !important;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: center;
+  border-radius: 5px;
+  background-color: limegreen;
+}
+
+.submit {
+  height: 25px !important;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: center;
+  border-radius: 5px;
+  background-color: limegreen;
+  font-family: IRANSans, sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+input[type=text] {
+  width: 25%;
+  background-color: #EFEFEF;
+  margin-bottom: 30px;
+  border-top: 1px dashed #666666;
+  border-bottom: 1px dashed #666666;
+  border-left: 1px dashed #666666;
+  border-right: 4px solid #FFFF33;
+  direction: rtl;
+  font-weight: 200;
+  font-size: 12.5px;
+}
+
+textarea {
+  width: 50% !important;
+  background-color: #EFEFEF;
+  margin-bottom: 30px;
+  border-right: 8px solid #FFFF33;
+  font-weight: 200;
+  font-size: 12.5px;
+}
+
+blockquote {
+  font-weight: 500;
+  padding: 10px;
+  border: 1px dashed #666666;
+}
+
+select {
+  width: 100%;
+  height: 23.5px;
+  background-color: #EFEFEF;
+  border-top: 1px dashed #666666;
+  border-bottom: 1px dashed #666666;
+  border-left: 1px dashed #666666;
+  border-right: 4px solid #FFFF33;
+  direction: rtl;
+  font-weight: 200;
+  font-size: 12.5px;
+  font-family: IRANSans, sans-serif;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.red {
+  color: #ff0000;
+}
+
+.grid {
+  display: inline-table !important;
+  width: 20% !important;
+}
+
+.eighty_width {
+  width: 80% !important;
+  margin-bottom: 8px !important;
+}
+
+.occasion {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-color: #93a1a1;
+  width: 100%;
+}
+
+.occasion > thead, .occasion > tbody {
+  display: block;
+}
+
+.occasion tbody {
+  height: 193px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.occasion tr {
+  display: inline-table;
+  width: 100% !important;
+  border-spacing: 0;
+}
+
+.occasion td {
+  font-family: IRANSans, sans-serif;
+  font-size: 14px;
+  padding: 5px 1px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #93a1a1;
+  color: #002b36;
+  background-color: #fdf6e3;
+}
+
+.occasion th {
+  font-family: IRANSans, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 5px 1px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #93a1a1;
+  color: #fdf6e3;
+  background-color: #657b83;
+}
+
+.occasion .tg-0pky {
+  border-color: inherit;
+  text-align: center;
+  vertical-align: middle;
+  font-family: IRANSans, sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-color: #93a1a1;
+  width: 100%;
+}
+
+.tg td {
+  font-family: IRANSans, sans-serif;
+  font-size: 14px;
+  padding: 5px 1px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #93a1a1;
+  color: #002b36;
+  background-color: #fdf6e3;
+}
+
+.tg th {
+  font-family: IRANSans, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 5px 1px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #93a1a1;
+  color: #fdf6e3;
+  background-color: #657b83;
+}
+
+.tg .tg-0pky {
+  border-color: inherit;
+  text-align: center;
+  vertical-align: middle;
+  font-family: IRANSans, sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.twenty-width {
+  width: 20% !important;
+}
+
+.fas {
+  cursor: pointer;
+  color: #657b83;
+}
+
+.event-date {
+  margin-bottom: 0 !important;
+  width: 65% !important;
+}
+
+.mini-button {
+  width: 21px !important;
+  height: 26px !important;
+  padding: 0 !important;
+  border: 1px dotted #657b83;
+  background-color: burlywood;
+  vertical-align: bottom;
+}
+
+.override {
+  width: 100% !important;
+}
+
+.mainbox {
+  width: 25%;
+  background-color: #EFEFEF;
+  display: table;
+  margin-bottom: 30px;
+  border-right: 8px solid #FFFF33;
+}
+
+.mainboxnegativ {
+  width: 100%;
+  background-color: #000000;
+  display: table;
+  margin-bottom: 30px;
+  border-right: 8px solid #FFFF33;
+  color: #F9F9F9;
+}
+
+.mainbox2 {
+  font-size: 1em;
+  width: 90%;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.mainbox2negativ {
+  font-size: 1em;
+  color: #F9F9F9;
+  background-color: #000000;
+  padding-right: 20px;
+}
+
+.farsiparagraph {
+  font-size: 1em;
+  width: 47%;
+  float: right;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.englishparagraph {
+  font-size: 1em;
+  width: 47%;
+  float: left;
+  direction: ltr;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+
+}
+
+.rightbox {
+  width: 60%;
+  padding-right: 20px;
+  padding-left: 5px;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  min-width: 0px;
+  background-color: #F7F7F7;
+
+}
+
+.titelbox {
+  width: 60%;
+  padding-right: 25px;
+  padding-left: 0px;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  min-width: 0px;
+  background-color: #F2F2F2;
+  color: #4B4B4B;
+}
+
+
+.lefttbox {
+
+  padding-right: 20px;
+  padding-left: 4px;
+  float: right;
+  margin-bottom: 10px;
+  min-width: 0px;
+}
+
+.alphabet {
+  width: 35%;
+  float: left;
+  font-size: 21em;
+  text-align: center;
+  font-weight: 500;
+  color: #999999;
+}
+
+.alphabet2 {
+  width: 35%;
+  float: left;
+  direction: ltr;
+  font-size: 1.6em;
+  text-align: left;
+  font-weight: 500;
+  color: #333333;
+  margin-top: 100px;
+}
+
+.footer {
+  font-weight: 300;
+  font-size: 0.7em;
+  text-align: center;
+  direction: ltr;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}

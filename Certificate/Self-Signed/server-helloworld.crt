@@ -1,0 +1,26 @@
+Bag Attributes
+    friendlyName: server-helloworld
+    localKeyID: 54 69 6D 65 20 31 36 34 30 34 33 36 37 36 32 35 36 36 
+subject=O = capitansissy.github.io, CN = localhost
+
+issuer=O = capitansissy.github.io, CN = localhost
+
+-----BEGIN CERTIFICATE-----
+MIIDCTCCAfGgAwIBAgIELYew6zANBgkqhkiG9w0BAQsFADA1MR8wHQYDVQQKExZj
+YXBpdGFuc2lzc3kuZ2l0aHViLmlvMRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMjEx
+MjA1MTczNzIzWhcNMzExMjAzMTczNzIzWjA1MR8wHQYDVQQKExZjYXBpdGFuc2lz
+c3kuZ2l0aHViLmlvMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQCELCcQhmBoNV4d2NvZ/WRMLR+oqZ6i+YBxTyymmUhQ
+bD2PmkVLmN3u24biqGkXXLhGnHQ0OWcy6m0w085+3uYDuR1IZA+ZE1iZIWu+CIFX
+3Sp75f/EHPMpRvuJDzvu4P8E3M24nxqJIHmsQESnLtjj+mYabJLk6uX8K1ycPT0r
+/9/3QtrdZMYqyNaWAI1NU5v8Dqt+wzlpjvhUmNdJRD1ETBWr+s+4AkypbAZ+bkt0
+YQ6iZLkKK8Lm8YmvW3s2miTGY9cRwIYQCYzVYG84NCMKfygCc+9IjwHcH1FCcOqC
+qjOTFQU1q5sMxdk7zwdqU6CbHF3jFogoZRpl6jIt9GwPAgMBAAGjITAfMB0GA1Ud
+DgQWBBQj0S3nUjPNcl9bypggaGK0ctoFOjANBgkqhkiG9w0BAQsFAAOCAQEAFbal
+plIPYMOuzXdjW0EgENZsGGWExD53+gCE4TWSOToLV9OjhmcrvYhV5zzC46P/hGIJ
+zRFbWJnM0/gyiXXj0bdvZWOmaaq8vnU50dHp6ApBVQffoRdLe7FEYA51mYtLrDwh
+KxU7bYb0S5T9AlgcAmBzGXoPz9pR3nry+2oam51vXRZagrAaC0LwYimain2gaoqi
+HGJ/ixU7XHYDA/u6RfYFbNaJWKzkggb+c5LicFJxOtBiOsw+Z09iJlEPKBrEB//z
+kc/hqezkRORCmS4Tor4zfj6iFijvRT68v+WFSvo/tR+acQQiINbY+TzDR91co3ek
+ZbPxJcJXM+Rj2vafuA==
+-----END CERTIFICATE-----

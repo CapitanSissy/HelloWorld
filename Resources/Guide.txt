@@ -37,3 +37,49 @@ Install Certificate
 
 Delete Certificate
   1. "%JAVA_BASE%\bin\keytool" -delete -alias HelloWorld -keystore "%JAVA_BASE%\jre\lib\security\cacerts"
+
+
+/*=-=-=-=-=-[ How to Make VHost with XAMPP ]-=-=-=-=-=*/
+1. %XAMPP_HOME%\apache\conf\extra\httpd-vhosts.conf
+   <VirtualHost *:80>
+     DocumentRoot "%XAMPP_HOME%/htdocs/Php"
+     ServerName capitansissy.cw
+     ErrorLog "logs/capitansissy.cw-error.log"
+     CustomLog "logs/capitansissy.cw-access.log" common
+     <Directory "%XAMPP_HOME%/htdocs/Php">
+     </Directory>
+   </VirtualHost>
+
+2. C:\Windows\System32\drivers\etc\hosts
+   127.0.0.1       capitansissy.cw
+   127.0.0.1       api.capitansissy.cw
+
+3. keytool -importkeystore -srckeystore "%PUBLIC_KEY_PATH%\server-helloworld-keystore.jks" -destkeystore "%PUBLIC_KEY_PATH%\server-helloworld-keystore.p12" -deststoretype PKCS12
+   openssl pkcs12 -in "%PUBLIC_KEY_PATH%\server-helloworld-keystore.p12" -nokeys -out "%PUBLIC_KEY_PATH%\server-helloworld.crt"
+   openssl pkcs12 -in "%PUBLIC_KEY_PATH%\server-helloworld-keystore.p12" -nocerts -nodes -out "%PUBLIC_KEY_PATH%\server-helloworld.key"
+
+3. Create %XAMPP_HOME%\apache\ssl folder and put your SSL in it.
+   <VirtualHost *:444>
+     DocumentRoot "C:/XAMPP/htdocs/Php"
+     DirectoryIndex wrapper.php
+     ServerName api.capitansissy.cw:444
+     ErrorLog "logs/api_capitansissy.cw-ssl-error.log"
+     CustomLog "logs/api_capitansissy.cw-ssl-access.log" common
+     SSLEngine on
+     SSLCertificateFile "ssl/server-helloworld.crt"
+     SSLCertificateKeyFile "ssl/server-helloworld.key"
+
+     <Directory "C:/XAMPP/htdocs/Php">
+       Options -Indexes -FollowSymLinks -MultiViews
+       Order deny,allow
+       Deny from all
+       Allow from 127.0.0.1
+       ErrorDocument 401 "Sorry, can't allow you access today"
+       ErrorDocument 403 "Sorry, can't allow you access today"
+       ErrorDocument 404 "Sorry, can't allow you access today"
+       ErrorDocument 500 "Sorry, can't allow you access today"
+       ErrorDocument 503 "Sorry, can't allow you access today"
+     </Directory>
+   </VirtualHost>
+
+4. Browse https://capitansissy.cw:444/ && https://api.capitansissy.cw:444/
