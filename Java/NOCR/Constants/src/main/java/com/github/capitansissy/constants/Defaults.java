@@ -63,7 +63,7 @@ public class Defaults implements Serializable {
   }
 
   public static class URL {
-    public static final String PROTOCOL = "TLS";
+    public static final String PROTOCOL = "TLSv1.2";
     public static final String SLD = "localhost";
     public static final String TLD = "";
     public static final String DIRECTORY = "fa/v1";

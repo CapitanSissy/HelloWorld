@@ -87,7 +87,15 @@ public class GeneralImpl implements SGeneral, RGeneral {
 
   @Override
   public String GetInput(String input) {
-    return Objects.requireNonNull(AES.decrypt(resource.get("you.said"), Defaults.INTERNAL_SECURITY_KEY)).concat(Defaults.Slugs.Space).concat(Tools.getText(input));
+    try {
+      if (input != null) {
+        return Objects.requireNonNull(AES.decrypt(resource.get("you.said"), Defaults.INTERNAL_SECURITY_KEY)).concat(Defaults.Slugs.Space).concat(Tools.getText(input));
+      } else {
+        return AES.decrypt(resource.get("invalid.request"), Defaults.INTERNAL_SECURITY_KEY);
+      }
+    } catch (Exception e) {
+      return e.getMessage();
+    }
   }
 
   @Override

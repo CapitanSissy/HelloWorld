@@ -69,8 +69,28 @@ Delete Certificate
      SSLCertificateFile "ssl/server-helloworld.crt"
      SSLCertificateKeyFile "ssl/server-helloworld.key"
 
+     RewriteEngine On
+     RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+     RewriteRule .* - [F]
+
+     <IfModule mod_headers.c>
+       Header always edit Set-Cookie (.*) "$1; SameSite=Lax"
+       Header always edit Set-Cookie "(?i)^((?:(?!;\s?HttpOnly).)+)$" "$1; HttpOnly"
+       Header always edit Set-Cookie "(?i)^((?:(?!;\s?secure).)+)$" "$1; secure"
+       Header always set X-XSS-Protection "1; mode=block"
+       Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+       Header always append X-Frame-Options DENY
+       Header always set X-Content-Type-Options nosniff
+       Header always set X-Permitted-Cross-Domain-Policies "none"
+       Header always set Referrer-Policy "strict-origin"
+       Header always set Feature-Policy "microphone 'none'; camera 'none'"
+       Header set Content-Security-Policy "style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline' https://kit.fontawesome.com/7524e05e75.js; script-src 'nonce-sha256-aGVsbG93b3JsZA==' https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js https://kit.fontawesome.com/7524e05e75.js; script-src-elem 'self' 'unsafe-inline' https://api.capitansissy.cw/assets/js/*.js https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js https://kit.fontawesome.com/7524e05e75.js; connect-src 'self' https://*.fontawesome.com; frame-ancestors 'none'; img-src 'self' https://img.shields.io; object-src 'none'; font-src 'self' https://*.fontawesome.com; base-uri 'none';"
+       ##Header unset X-Runtime
+       ##Header unset X-Powered-By
+     </IfModule>
+
      <Directory "C:/XAMPP/htdocs/Php">
-       Options -Indexes -FollowSymLinks -MultiViews
+       Options -Indexes -FollowSymLinks -MultiViews -ExecCGI -Includes
        Order deny,allow
        Deny from all
        Allow from 127.0.0.1
@@ -83,3 +103,10 @@ Delete Certificate
    </VirtualHost>
 
 4. Browse https://capitansissy.cw:444/ && https://api.capitansissy.cw:444/
+5. 
+   Php.ini > expose_php = off
+   httpd.conf > Comment LoadModule info_module modules/mod_info.so
+   httpd.conf > Comment LoadModule status_module modules/mod_status.so
+   httpd.conf > Uncomment LoadModule rewrite_module modules/mod_rewrite.so
+   %XAMPP_HOME%\apache\conf\extra\httpd-default.conf > ServerSignature=Off && ServerTokens=Prod
+   %XAMPP_HOME%\apache\conf\extra\httpd-ssl.conf     > SSLProtocol -SSLv3 -SSLv2 -SSLv3 -TLSv1 -TLSv1.1 +TLSv1.2 +TLSv1.3

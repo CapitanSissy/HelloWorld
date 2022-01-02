@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<javaee:handler-chains xmlns:javaee="http://java.sun.com/xml/ns/javaee">
-  <javaee:handler-chain>
-    <javaee:handler>
-      <javaee:handler-class>com.github.capitansissy.service.handler.MacAddressValidator</javaee:handler-class>
-    </javaee:handler>
-  </javaee:handler-chain>
-</javaee:handler-chains>
+<?xml version="1.0" encoding="UTF-8"?>
+<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
+  <handler-chain>
+    <handler>
+      <handler-class>com.github.capitansissy.service.handler.SecurityValidator</handler-class>
+    </handler>
+  </handler-chain>
+</handler-chains>

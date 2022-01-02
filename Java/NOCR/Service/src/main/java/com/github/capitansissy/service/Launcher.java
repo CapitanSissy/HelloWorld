@@ -27,9 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.net.ssl.*;
 import javax.xml.ws.Endpoint;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.security.KeyStore;
@@ -115,6 +113,13 @@ public class Launcher implements Serializable {
     try {
       logger.setLog(String.format("Hello %s", companyName()), Defaults.Log4J.DEBUG);
       System.setProperty("javax.xml.bind.JAXBContext", "com.sun.xml.internal.bind.v2.ContextFactory");
+
+      System.setErr(new PrintStream(new OutputStream() {
+        @Override
+        public void write(int arg0) throws IOException {
+          // TODO: Keep empty
+        }
+      }));
 
       // At startup we check the database and then create connection pool.
       try {

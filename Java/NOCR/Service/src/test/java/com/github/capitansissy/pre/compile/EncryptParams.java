@@ -7,6 +7,9 @@ import com.github.capitansissy.enumeration.Database;
 import com.github.capitansissy.enumeration.Tables;
 import com.github.capitansissy.security.AES;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class EncryptParams {
@@ -107,6 +110,13 @@ public class EncryptParams {
       data.setUsername("helloworld_data");
       data.setPassword("qazQAZ@456");
       encryptDatabaseParameters(data, Database.Data.getCode());
+
+      ImageCrypto.encryptImage(new FileInputStream(new File("D:/male.jpg")),
+        new FileOutputStream(new File("D:/encrypted-male.jpg")));
+
+      ImageCrypto.decryptImage(new FileInputStream("D:/encrypted-male.jpg"),
+        new FileOutputStream(new File("D:/normal-male.jpg")));
+
     } catch (Exception e) {
       e.printStackTrace();
     }

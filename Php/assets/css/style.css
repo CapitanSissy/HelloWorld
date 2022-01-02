@@ -164,6 +164,11 @@ select {
   width: 20% !important;
 }
 
+.fourty_width {
+  width: 40% !important;
+  margin-bottom: 4px !important;
+}
+
 .eighty_width {
   width: 80% !important;
   margin-bottom: 8px !important;
