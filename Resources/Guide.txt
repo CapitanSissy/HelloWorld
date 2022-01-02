@@ -103,7 +103,7 @@ Delete Certificate
    </VirtualHost>
 
 4. Browse https://capitansissy.cw:444/ && https://api.capitansissy.cw:444/
-5. 
+5. For more security and server hardening, do the following:
    Php.ini > expose_php = off
    httpd.conf > Comment LoadModule info_module modules/mod_info.so
    httpd.conf > Comment LoadModule status_module modules/mod_status.so
